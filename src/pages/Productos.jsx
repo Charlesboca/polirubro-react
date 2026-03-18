@@ -19,7 +19,7 @@ function Productos(){
 {/* 2. ACÁ USAMOS LAS CATEGORÍAS */}
       <Categorias />
 
-  <div className="grid">
+{/*   <div className="grid">
    {data.map(p=>(
     <div className="card" key={p.id}>
       <h3>{p.nombre}</h3>
@@ -28,7 +28,7 @@ function Productos(){
     </div>
    ))}
   </div>
-
+ */}
  </>
 
  )
