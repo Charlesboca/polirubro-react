@@ -1,40 +1,56 @@
-/* header.css */
+/* header.css - VERSIÓN SLIM */
 .header {
-  position: relative;
+  position: sticky; /* Cambio clave: que te siga al bajar (opcional) */
+  top: 0;
+  z-index: 1000;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
-  /* NEGRO PURO para que tu imagen no se note */
   background: #000000; 
 
-  min-height: 120px;
-  padding: 20px 30px;
+  /* BAJAMOS LA ALTURA ACÁ */
+  min-height: 95px; 
+  padding: 10px 30px; /* Menos padding arriba y abajo */
 
-  /* Línea amarilla para darle estilo */
-  border-bottom: 5px solid #facc15; 
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+  border-bottom: 4px solid #facc15; 
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
 }
 
 .logo-img {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 180px;
-  /* Si la imagen tiene fondo negro, ahora va a ser invisible el borde */
+  
+  /* ACHICAMOS EL LOGO para que entre en el header finito */
+  width: 130px; 
+  transition: width 0.3s ease;
 }
 
 .carrito-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #ffffff; /* Blanco puro */
-  font-size: 18px;
+  color: #ffffff;
+  font-size: 16px; /* Bajamos un pelín el tamaño */
   cursor: pointer;
 }
 
+/* --- AJUSTE PARA CELULARES --- */
+@media (max-width: 768px) {
+  .header {
+    min-height: 65px;
+    padding: 10px 15px;
+  }
+  
+  .logo-img {
+    width: 100px; /* Logo más chico en el celu */
+  }
+}
+
 nav a {
-  color: #ffffff; /* Blanco puro para los links */
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 14px;
 }

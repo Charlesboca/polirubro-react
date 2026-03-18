@@ -1,14 +1,16 @@
-/* Carrusel.css */
+/* Carrusel.css - VERSIÓN AJUSTADA */
+
 .carrusel-contenedor {
   width: 100%;
-  height: 400px; /* Ajustá la altura según tus imágenes */
-  margin-bottom: 30px;
-  overflow: hidden; /* Para asegurar bordes limpios */
+  height: 300px; /* <--- Bajamos de 400 a 300 para que sea más petiso */
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .swiper {
   width: 100%;
-  height: 100%;
+  height: 300px; /* <--- Siempre igual que el contenedor */
+  border-radius: 0 0 20px 20px;
 }
 
 .slide-image-wrapper {
@@ -20,35 +22,49 @@
 .slide-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* CLAVE: La imagen cubre todo sin estirarse */
-  object-position: center; /* Centra la imagen */
+  object-fit: cover; 
+  object-position: center; 
 }
 
-/* Estilo para el texto OPCIONAL encima de la imagen */
+/* Ajustamos el texto para que no tape toda la foto ahora que es más petisa */
 .slide-text-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 40px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); /* Degradado negro para legibilidad */
-  color: #facc15; /* Letras amarillas */
+  padding: 20px 15px; /* Menos padding para ganar espacio */
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #facc15;
   text-align: center;
 }
 
 .slide-text-overlay h2 {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
+  font-size: 1.8rem; /* <--- Bajamos el tamaño de la letra (estaba en 2.5) */
+  margin-bottom: 2px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para resaltar */
 }
 
 .slide-text-overlay p {
-  font-size: 1.2rem;
-  color: white; /* Subtítulo en blanco */
+  font-size: 1rem; /* <--- Un poco más chico el subtítulo */
+  color: white;
 }
 
-/* ESTILO DE LAS FLECHITAS Y PUNTITOS (Esto queda igual, en amarillo) */
+/* --- AJUSTE PARA CELULARES (¡MUY IMPORTANTE!) --- */
+@media (max-width: 768px) {
+  .carrusel-contenedor, .swiper {
+    height: 200px; /* <--- En el celu se hace todavía más bajito */
+  }
+
+  .slide-text-overlay h2 {
+    font-size: 1.3rem; /* Letra más chica para que no tape la promo */
+  }
+  
+  .slide-text-overlay p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Flechitas y puntitos */
 :root {
   --swiper-navigation-color: #facc15; 
   --swiper-pagination-color: #facc15; 
