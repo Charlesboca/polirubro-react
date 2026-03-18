@@ -27,15 +27,17 @@
 
 .categoria-card {
   background: #ffffff;
-  border-radius: 15px; /* Bordes un poco más redondeados para que sea más moderno */
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
+  border-radius: 12px; /* Mismo radio que le diste a la foto arriba */
+  
+  /* --- CLAVE PARA QUE EL REDONDEADO FUNCIONE --- */
+  overflow: hidden;    /* Corta cualquier cosa de la foto que se salga de la curva */
+  
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
   border: 1px solid #eee;
   display: flex;
   flex-direction: column;
 }
-
 .categoria-card:hover {
   transform: translateY(-10px);
   border-color: #facc15;
@@ -55,16 +57,21 @@
   position: relative;
 }
 
+/* La imagen real dentro de la card (Categoría o Producto) */
 .card-img {
   width: 100%;
   height: 100%;
+  object-fit: contain; /* O cover, según prefieras */
+  padding: 10px;      /* Espacio para el efecto contain */
   
-  /* --- EL CAMBIO CLAVE --- */
-  object-fit: contain; /* Muestra el producto ENTERO sin recortar nada */
-  padding: 10px;      /* Le da un respiro a la foto para que no toque los bordes */
+  /* --- EL EFECTO DE ESQUINAS REDONDEADAS ACÁ --- */
+  /* Redondea: arriba-izq, arriba-der, abajo-der, abajo-izq */
+  border-top-left-radius: 12px; /* Mismo radio que la .categoria-card */
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 0; /* Abajo quedan rectas */
+  border-bottom-left-radius: 0;
   
-  /* Si preferís que la foto LLENE todo el espacio (aunque corte un poquito los costados), 
-     cambiá "contain" por "cover" */
+  /* O más corto: border-radius: 12px 12px 0 0; */
   
   transition: transform 0.3s ease;
 }
