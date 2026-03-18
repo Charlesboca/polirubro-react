@@ -14,10 +14,10 @@ import "../Estilos/Header.css";
 
       <img src={logo} alt="logo" className="logo-img" />
 
-      <Link to="/carrito" className="carrito-header">
+      {/* <Link to="/carrito" className="carrito-header">
         <FaShoppingCart />
         <span>({carrito.length})</span>
-      </Link>
+      </Link> */}
 
     </header>
   );

@@ -15,9 +15,6 @@ export default function Inicio(){
 {/* 2. LO USAMOS COMO UNA ETIQUETA */}
       <Carrusel />
 
-{/* 2. ACÁ USAMOS LAS CATEGORÍAS */}
-      <Categorias />
-
   
       <section className="texto-pagina">
         <h2>Direccion</h2>

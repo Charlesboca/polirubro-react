@@ -48,7 +48,7 @@ const Footer = () => {
           <div className="footer-separator"></div>
 
           <div className="footer-credits"> 
-            <p>Desarrollado por <b>Carlos Avalos</b></p> 
+            <p>Desarrollado por <b>XXXXXXXX</b></p> 
             <p className="footer-copy">
               &copy; {new Date().getFullYear()} - Todos los derechos reservados
             </p>
