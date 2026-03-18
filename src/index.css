@@ -1,9 +1,14 @@
+html {
+  /* El estándar es 16px. Bajándolo a 14px o 15px achicás TODO. */
+  font-size: 14px; 
+}
 body
 {
 margin:0;
 font-family:sans-serif;
 background:#f5f5f5
 }
+
 
 
 /* ===== Texto Global Pagina ===== */
