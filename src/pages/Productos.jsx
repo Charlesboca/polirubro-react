@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
-import "./Productos.css";
+import "../Estilos/Productos.css";
 
 const data=[
  {id:1,nombre:"Auriculares",precio:5000},
@@ -8,7 +8,7 @@ const data=[
  {id:3,nombre:"Teclado",precio:7000}
 ];
 
-export default function Productos(){
+function Productos(){
  const {agregarProducto}=useContext(CarritoContext);
 
  return(
@@ -23,3 +23,5 @@ export default function Productos(){
   </div>
  )
 }
+
+export default Productos

@@ -1,0 +1,98 @@
+/* Footer.css */
+.main-footer {
+  background-color: #000000; 
+  color: #ffffff;
+  padding: 40px 20px;
+  margin-top: 60px;
+  width: 100%;
+  border-top: 5px solid #facc15;
+}
+
+/* 1. EL CONTENEDOR MAESTRO: Controla la distribución horizontal */
+.footer-layout {
+  display: flex;
+  justify-content: space-between; /* Logo a la izq, contenido al centro */
+  align-items: center;
+  max-width: 1200px; /* Un poco más ancho para que el logo tenga aire */
+  margin: 0 auto;
+}
+
+/* 2. EL LADO DEL LOGO */
+.footer-left {
+  flex: 1; /* Ocupa 1 parte del espacio */
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-logo {
+  width: 120px; /* Ajustalo según veas que queda mejor */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.05); /* Un pequeño zoom cuando pasan el mouse */
+}
+
+/* 3. TU CONTENEDOR ACTUAL (Ahora es el centro) */
+.footer-container {
+  flex: 2; /* Ocupa 2 partes (es el doble de ancho que los costados) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* 4. EL ESPACIADOR DERECHO: Clave para que el centro sea real */
+.footer-right-spacer {
+  flex: 1; /* Ocupa 1 parte (igual que el logo) */
+}
+
+/* --- TUS ESTILOS DE TEXTO (Se mantienen igual) --- */
+.footer-title {
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.footer-social-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.footer-separator {
+  width: 60px;
+  height: 3px;
+  background-color: #facc15;
+  margin: 15px 0;
+}
+
+.footer-credits p {
+  margin: 5px 0;
+  color: #ffffff;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* --- RESPONSIVE: Para que en el celu no se rompa nada --- */
+@media (max-width: 768px) {
+  .footer-layout {
+    flex-direction: column; /* Se ponen uno abajo del otro */
+    gap: 30px;
+  }
+  
+  .footer-right-spacer {
+    display: none; /* En celu no lo necesitamos */
+  }
+  
+  .footer-left {
+    justify-content: center; /* Centramos el logo en el celu */
+  }
+}

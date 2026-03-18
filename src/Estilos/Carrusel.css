@@ -1,0 +1,55 @@
+/* Carrusel.css */
+.carrusel-contenedor {
+  width: 100%;
+  height: 400px; /* Ajustá la altura según tus imágenes */
+  margin-bottom: 30px;
+  overflow: hidden; /* Para asegurar bordes limpios */
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* CLAVE: La imagen cubre todo sin estirarse */
+  object-position: center; /* Centra la imagen */
+}
+
+/* Estilo para el texto OPCIONAL encima de la imagen */
+.slide-text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); /* Degradado negro para legibilidad */
+  color: #facc15; /* Letras amarillas */
+  text-align: center;
+}
+
+.slide-text-overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra para resaltar */
+}
+
+.slide-text-overlay p {
+  font-size: 1.2rem;
+  color: white; /* Subtítulo en blanco */
+}
+
+/* ESTILO DE LAS FLECHITAS Y PUNTITOS (Esto queda igual, en amarillo) */
+:root {
+  --swiper-navigation-color: #facc15; 
+  --swiper-pagination-color: #facc15; 
+}

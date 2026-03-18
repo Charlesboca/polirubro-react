@@ -1,0 +1,40 @@
+/* header.css */
+.header {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  /* NEGRO PURO para que tu imagen no se note */
+  background: #000000; 
+
+  min-height: 120px;
+  padding: 20px 30px;
+
+  /* Línea amarilla para darle estilo */
+  border-bottom: 5px solid #facc15; 
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+}
+
+.logo-img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  /* Si la imagen tiene fondo negro, ahora va a ser invisible el borde */
+}
+
+.carrito-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff; /* Blanco puro */
+  font-size: 18px;
+  cursor: pointer;
+}
+
+nav a {
+  color: #ffffff; /* Blanco puro para los links */
+  text-decoration: none;
+  font-weight: bold;
+}

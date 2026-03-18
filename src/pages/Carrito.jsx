@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 
-export default function Carrito(){
+function Carrito(){
  const {carrito,eliminarProducto,total}=useContext(CarritoContext);
 
  return(
@@ -17,3 +17,5 @@ export default function Carrito(){
   </div>
  )
 }
+
+export default  Carrito

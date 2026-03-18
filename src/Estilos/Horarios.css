@@ -1,0 +1,53 @@
+/* horarios.css */
+.horarios-section {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  background-color: #f9fafb; /* Un gris muy clarito para que resalte la card negra */
+}
+
+.horarios-card {
+  background-color: #000000; /* Negro para combinar con Header/Footer */
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border-left: 8px solid #facc15; /* Detalle amarillo a la izquierda */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.horarios-titulo {
+  color: #facc15; /* Titulo en Amarillo */
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.horarios-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.horario-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.hora {
+  font-weight: bold;
+  color: #facc15; /* Las horas resaltan en amarillo */
+}
+
+.horarios-nota {
+  margin-top: 20px;
+  font-style: italic;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}

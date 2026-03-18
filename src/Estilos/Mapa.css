@@ -1,0 +1,83 @@
+
+/* ===== MAPA ===== */
+/* como-llegar.css */
+.como-llegar {
+  text-align: center;
+  padding: 60px 20px; /* Un poco más de aire arriba y abajo */
+  background-color: #ffffff; /* Fondo blanco para que resalte entre el header y footer negros */
+  color: #111827;
+}
+
+.como-llegar h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.direccion {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #4b5563; /* Un gris oscuro para que sea suave a la vista */
+}
+
+/* Contenedor de botones */
+.botones-mapa {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap; /* Para que en celulares se pongan uno abajo del otro */
+  margin-bottom: 40px;
+}
+
+/* Botón Principal (Amarillo como la línea del Header/Footer) */
+.btn-mapa {
+  background-color: #facc15;
+  color: #000000;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid #facc15;
+}
+
+.btn-mapa:hover {
+  background-color: #000000;
+  color: #facc15;
+  transform: translateY(-3px);
+}
+
+/* Botón Secundario (Negro) */
+.btn-mapa-secundario {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid #000000;
+}
+
+.btn-mapa-secundario:hover {
+  background-color: transparent;
+  color: #000000;
+  transform: translateY(-3px);
+}
+
+/* Estilo para el contenedor del mapa */
+.map-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Sombra suave para que "flote" */
+  border: 1px solid #e5e7eb;
+}
+
+iframe {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
