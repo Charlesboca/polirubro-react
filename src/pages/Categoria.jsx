@@ -2,7 +2,7 @@ import React, { useState } from 'react'; // <--- Importamos useState
 import "../Estilos/Categorias.css"; 
 import { productos } from "../Data/Productos.js"; // <--- Importamos tus productos locales
 
-import logoNegro from "../Imagenes/logo_polirrubro.jpg"; 
+import logoNegro from "../Imagenes/logo_polirrubro_1.jpg"; 
 
 const categorias = [
   { id: 1, nombre: 'BAZAR', imagen: logoNegro, desc: 'Todo para tu hogar' },

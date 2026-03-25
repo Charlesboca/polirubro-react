@@ -1,11 +1,24 @@
 import React from 'react';
+import { useNavigate, useLocation } from "react-router-dom"; // Agregamos useLocation
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import "../Estilos/Footer.css";
-
-import logoNegro from "../Imagenes/logo_polirrubro.jpg"; // <--- Importá tu imagen acá
-
+import logoNegro from "../Imagenes/logo_polirrubro.jpg"; 
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation(); // Detectamos la ubicación actual
+
+  // Función idéntica a la del Header para mantener la coherencia
+  const manejarClicLogo = () => {
+    if (location.pathname === "/") {
+      // Si ya está en inicio, sube suavemente
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Si está en otra página, navega al inicio
+      navigate("/");
+    }
+  };
+
   const socialLinks = [
     { id: 1, platform: "Instagram", url: "https://www.instagram.com/lleva_tetodo99", color: "#E4405F" },
     { 
@@ -18,26 +31,26 @@ const Footer = () => {
 
   return (
     <footer className="main-footer">
-      {/* Nuevo contenedor para organizar izquierda y centro */}
       <div className="footer-layout">
         
-        {/* LADO IZQUIERDO: La imagen */}
         <div className="footer-left">
-          <img src={logoNegro} alt="Logo Polirrubro" className="footer-logo" />
+          {/* Vinculamos la nueva función al contenedor del logo */}
+          <div onClick={manejarClicLogo} className="footer-logo-container" style={{ cursor: 'pointer' }}>
+            <img src={logoNegro} alt="Logo Polirrubro" className="footer-logo" />
+          </div>
         </div>
 
-        {/* CENTRO: Todo lo que ya tenías */}
         <div className="footer-container">
           <div className="footer-title">CONTACTANOS</div>
-
+          
           <div className="footer-social-group">
             {socialLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
+              <a 
+                key={link.id} 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="social-link" 
                 style={{ color: link.color }}
               >
                 {link.platform === "Instagram" ? <FaInstagram size={40} /> : <FaWhatsapp size={40} />}
@@ -55,9 +68,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ESPACIO DERECHO: Para equilibrar el logo de la izquierda y que el centro sea real */}
         <div className="footer-right-spacer"></div>
-
       </div>
     </footer>
   );

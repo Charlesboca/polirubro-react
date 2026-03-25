@@ -2,6 +2,11 @@
 import pava from "../Imagenes/Stock/pava.jpg";
 import cuaderno from "../Imagenes/Stock/cuaderno.jpg";
 import detergente from "../Imagenes/Stock/detergente.jpg";
+import secaplato from "../Imagenes/Stock/secaplato_nordico.jpg";
+import setCopas from "../Imagenes/Stock/set-copas.jpg";
+import platos from "../Imagenes/Stock/set-platos.jpg";
+
+
 
 export const productos = [
   {
@@ -30,5 +35,33 @@ export const productos = [
     imagen: detergente,
     descripcion: "Ideal para sanitizar superficies.",
     envioGratis: false
+  },
+   {
+    id: 4,
+    nombre: "Secaplato Nórdico",
+    precio: "18.500",
+    categoria: "BAZAR",
+    imagen: secaplato,
+    descripcion: "Secaplato Nórdico.",
+    envioGratis: true
+  }
+  ,
+   {
+    id: 5,
+    nombre: "Set de Copas",
+    precio: "25.000",
+    categoria: "BAZAR",
+    imagen: setCopas,
+    descripcion: "Set de Copas.",
+    envioGratis: true
+  },
+   {
+    id: 6,
+    nombre: "Set de Platos",
+    precio: "30.000",
+    categoria: "BAZAR",
+    imagen: platos,
+    descripcion: "Set de Platos.",
+    envioGratis: true
   }
 ];

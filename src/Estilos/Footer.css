@@ -8,48 +8,63 @@
   border-top: 5px solid #facc15;
 }
 
-/* 1. EL CONTENEDOR MAESTRO: Controla la distribución horizontal */
+/* 1. EL CONTENEDOR MAESTRO */
 .footer-layout {
   display: flex;
-  justify-content: space-between; /* Logo a la izq, contenido al centro */
+  justify-content: space-between; 
   align-items: center;
-  max-width: 1200px; /* Un poco más ancho para que el logo tenga aire */
+  max-width: 1200px; 
   margin: 0 auto;
 }
 
 /* 2. EL LADO DEL LOGO */
 .footer-left {
-  flex: 1; /* Ocupa 1 parte del espacio */
+  flex: 1;
   display: flex;
   justify-content: flex-start;
+  position: relative;
+  z-index: 50; /* Lo subimos un poco más por seguridad */
+}
+
+/* El nuevo contenedor con el onClick del JSX */
+.footer-logo-container {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 0;
+  position: relative;
+  z-index: 60;
 }
 
 .footer-logo {
-  width: 120px; /* Ajustalo según veas que queda mejor */
+  width: 120px; 
   height: auto;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: block;
 }
 
 .footer-logo:hover {
-  transform: scale(1.05); /* Un pequeño zoom cuando pasan el mouse */
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 
-/* 3. TU CONTENEDOR ACTUAL (Ahora es el centro) */
+/* 3. CENTRO */
 .footer-container {
-  flex: 2; /* Ocupa 2 partes (es el doble de ancho que los costados) */
+  flex: 2; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  z-index: 10;
 }
 
-/* 4. EL ESPACIADOR DERECHO: Clave para que el centro sea real */
+/* 4. ESPACIADOR DERECHO */
 .footer-right-spacer {
-  flex: 1; /* Ocupa 1 parte (igual que el logo) */
+  flex: 1;
+  pointer-events: none; 
 }
 
-/* --- TUS ESTILOS DE TEXTO (Se mantienen igual) --- */
+/* --- ESTILOS DE TEXTO --- */
 .footer-title {
   color: #ffffff;
   margin-bottom: 10px;
@@ -62,6 +77,18 @@
   display: flex;
   gap: 15px;
   margin-bottom: 10px;
+}
+
+/* Los links de redes sociales siguen siendo 'a', así que mantenemos esto */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
 }
 
 .footer-separator {
@@ -81,18 +108,20 @@
   color: #cccccc;
 }
 
-/* --- RESPONSIVE: Para que en el celu no se rompa nada --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .footer-layout {
-    flex-direction: column; /* Se ponen uno abajo del otro */
+    flex-direction: column; 
     gap: 30px;
   }
   
   .footer-right-spacer {
-    display: none; /* En celu no lo necesitamos */
+    display: none; 
   }
-  
+
   .footer-left {
-    justify-content: center; /* Centramos el logo en el celu */
+    justify-content: center; 
+    width: 100%;
+    z-index: 50;
   }
 }

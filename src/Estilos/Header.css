@@ -1,18 +1,14 @@
-/* header.css - VERSIÓN SLIM */
+/* Header.css */
 .header {
-  position: sticky; /* Cambio clave: que te siga al bajar (opcional) */
+  position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Manda el carrito a la derecha */
   align-items: center;
-
   background: #000000; 
-
-  /* BAJAMOS LA ALTURA ACÁ */
   min-height: 95px; 
-  padding: 10px 30px; /* Menos padding arriba y abajo */
-
+  padding: 10px 30px;
   border-bottom: 4px solid #facc15; 
   box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
 }
@@ -21,10 +17,15 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  
-  /* ACHICAMOS EL LOGO para que entre en el header finito */
   width: 130px; 
-  transition: width 0.3s ease;
+  height: auto;
+  cursor: pointer; /* Indispensable para que se sepa que es link */
+  transition: all 0.3s ease;
+  z-index: 1001; /* Un pelín más arriba que el header */
+}
+
+.logo-img:hover {
+  transform: translateX(-50%) scale(1.05); /* Mantiene el centrado en el hover */
 }
 
 .carrito-header {
@@ -32,8 +33,9 @@
   align-items: center;
   gap: 8px;
   color: #ffffff;
-  font-size: 16px; /* Bajamos un pelín el tamaño */
+  font-size: 16px;
   cursor: pointer;
+  z-index: 1002;
 }
 
 /* --- AJUSTE PARA CELULARES --- */
@@ -44,13 +46,6 @@
   }
   
   .logo-img {
-    width: 100px; /* Logo más chico en el celu */
+    width: 100px;
   }
-}
-
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 14px;
 }

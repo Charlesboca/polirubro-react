@@ -5,7 +5,7 @@
   text-align: center;
   padding: 60px 20px; /* Un poco más de aire arriba y abajo */
   background-color: #ffffff; /* Fondo blanco para que resalte entre el header y footer negros */
-  color: #111827;
+  color: yellow; /* Color de texto amarillo */
 }
 
 .como-llegar h2 {
@@ -28,6 +28,8 @@
   gap: 15px;
   flex-wrap: wrap; /* Para que en celulares se pongan uno abajo del otro */
   margin-bottom: 40px;
+    color: #000000;
+
 }
 
 /* Botón Principal (Amarillo como la línea del Header/Footer) */
