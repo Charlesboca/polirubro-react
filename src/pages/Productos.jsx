@@ -15,7 +15,7 @@ function Productos() {
       {/* Contenedor del botón centrado al final */}
       <div className="contenedor-boton-final">
         <Link to="/" className="btn-inicio-estilo">
-          Volver al Inicio
+          Volver al Inicioo
         </Link>
       </div>
     </div>
