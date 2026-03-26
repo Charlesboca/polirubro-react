@@ -1,11 +1,11 @@
-/* Header.css - RECARGADO */
+/* Header.css - RECARGADO (CORREGIDO) */
 .header {
   position: sticky;
   top: 0;
-  left: 0;                /* Asegura que empiece bien a la izquierda */
-  right: 0;               /* Asegura que termine bien a la derecha */
-  width: 100vw;           /* Usa el ancho total del visor del celu/PC */
-  margin-left: calc(-50vw + 50%); /* Truco para centrarlo si el padre es angosto */
+  left: 0;
+  right: 0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   
   z-index: 1000;
   display: flex;
@@ -17,8 +17,9 @@
   border-bottom: 4px solid #facc15; 
   box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
   
-  /* IMPORTANTE: Esto evita que el padding "infle" el ancho */
-
+  /* IMPORTANTE: Cerramos la instrucción y la LLAVE */
+  box-sizing: border-box;
+} 
 
 /* El logo se mantiene igual */
 .logo-img {
