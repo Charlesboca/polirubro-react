@@ -4,12 +4,25 @@
   min-height: 100vh;
 }
 
+/* 1. Al contenedor que envuelve al h2 */
+.promociones-container { 
+  text-align: center; /* Esto centra cualquier cosa inline-block adentro */
+  width: 100%;
+}
+
+/* 2. Tu clase actual (revisá el color si el fondo es negro) */
 .titulo-seccion {
-  color: #ffcc00; /* Tu amarillo */
-  text-align: center;
+  font-size: 2.2rem;
+  margin-top: 20px; /* Un poco de aire arriba */
+  margin-bottom: 40px;
+  color: black;  
+  border-bottom: 4px solid #facc15;
   text-transform: uppercase;
-  border-bottom: 2px solid #ffcc00;
-  padding-bottom: 10px;
+  display: inline-block;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+
+  
 }
 
 .promos-grid {
@@ -75,4 +88,61 @@
 .btn-pedir-promo:hover {
   background-color: #ffcc00; /* Fondo amarillo */
   color: #000; /* Letras negras */
+}
+
+/* --- ESTILOS DEL MODAL (VENTANA FLOTANTE) --- */
+
+/* Fondo oscuro detrás de la foto grande */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Casi negro total */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté por encima de todo */
+  cursor: zoom-out; /* Indica que se cierra al hacer clic */
+}
+
+/* Contenedor de la foto grande */
+.modal-content {
+  position: relative;
+  max-width: 90%; /* Se adapta al ancho de la pantalla */
+  max-height: 90%; /* Se adapta al alto de la pantalla */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Mantiene la proporción de la foto */
+  border: 3px solid #facc15; /* El amarillo de tu local */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3); /* Sombra amarilla suave */
+}
+
+/* La X para cerrar */
+.cerrar-modal {
+  position: absolute;
+  top: -50px; /* Separación de la foto */
+  right: 0;
+  color: #facc15; /* Tu amarillo */
+  font-size: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+  .cerrar-modal {
+    top: -40px;
+    right: 10px;
+    font-size: 40px;
+  }
 }

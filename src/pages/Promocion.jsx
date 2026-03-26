@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react'; // 1. IMPORTAMOS useState
 import "../Estilos/Promocion.css";
+
+// --- IMPORTAMOS LAS IMÁGENES (tus rutas originales) ---
+import imagenBazar from '../Imagenes/promo_limpieza.jpg';
+import promo_set_mate from '../Imagenes/promo_set_mate.jpg';
 
 const promocionesData = [
   {
@@ -7,7 +11,7 @@ const promocionesData = [
     titulo: "Combo Limpieza",
     descripcion: "Lavandina 1L + Detergente + Esponja de regalo",
     precio: 2500,
-    imagen: "https://via.placeholder.com/200", // Acá va la ruta de tu imagen
+    imagen: imagenBazar, // Ruta original
     vence: "Sábado 31/03"
   },
   {
@@ -15,12 +19,15 @@ const promocionesData = [
     titulo: "Set de Mates",
     descripcion: "Mate de madera + Termo acero + Yerba 500g",
     precio: 8500,
-    imagen: "https://via.placeholder.com/200",
+    imagen: promo_set_mate, // Ruta original
     vence: "Hasta agotar stock"
   }
 ];
 
 export default function Promociones() {
+  // 2. CREAMOS EL ESTADO PARA LA IMAGEN AMPLIADA (arranca en null)
+  const [imagenExpandida, setImagenExpandida] = useState(null);
+
   const mensajeWhatsApp = (promo) => {
     const texto = `Hola! Me interesa la promo: ${promo.titulo} a $${promo.precio}`;
     return `https://api.whatsapp.com/send?phone=5493795337995&text=${encodeURIComponent(texto)}`;
@@ -33,7 +40,16 @@ export default function Promociones() {
         {promocionesData.map((promo) => (
           <div key={promo.id} className="promo-card">
             <div className="promo-badge">¡OFERTA!</div>
-            <img src={promo.imagen} alt={promo.titulo} className="promo-img" />
+            
+            {/* 3. MODIFICAMOS LA IMAGEN PARA QUE RESPONDA AL CLIC */}
+            <img 
+              src={promo.imagen} 
+              alt={promo.titulo} 
+              className="promo-img" 
+              onClick={() => setImagenExpandida(promo.imagen)} // Setea la imagen de ESTA promo
+              style={{ cursor: 'zoom-in' }} // Cambia el cursor para avisar que se puede agrandar
+            />
+            
             <h3>{promo.titulo}</h3>
             <p>{promo.descripcion}</p>
             <span className="promo-vence">Vence: {promo.vence}</span>
@@ -49,6 +65,16 @@ export default function Promociones() {
           </div>
         ))}
       </div>
+
+      {/* 4. AGREGAMOS EL MODAL (solo se muestra si imagenExpandida no es null) */}
+      {imagenExpandida && (
+        <div className="modal-overlay" onClick={() => setImagenExpandida(null)}>
+          <div className="modal-content">
+            <span className="cerrar-modal">&times;</span>
+            <img src={imagenExpandida} alt="Producto ampliado" />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
