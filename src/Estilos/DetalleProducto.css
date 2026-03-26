@@ -149,13 +149,63 @@
   transform: translateY(-2px); /* Un pequeño saltito */
 }
 
-/* --- AJUSTE CELULAR --- */
+/* --- AJUSTE CELULAR COMPLETO --- */
 @media (max-width: 768px) {
   .detalle-page {
-    padding-top: 130px; /* En el celu el Nav suele ser más chico, con 130px va bien */
+    padding-top: 130px; /* Despegado del Nav en mobile */
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  
+
+  /* La tarjeta pasa de fila a columna */
+  .detalle-flex {
+    flex-direction: column; 
+    padding: 20px;
+    gap: 20px;
+    width: 100%; /* Que use todo el ancho del container */
+    text-align: center;
+    border-left: none; /* Quitamos el borde lateral... */
+    border-top: 4px solid #facc15; /* ...y lo ponemos arriba para que quede mejor */
+  }
+
+  /* La imagen ya no tiene tamaño fijo gigante */
+  .detalle-img img {
+    width: 100%;
+    max-width: 240px; /* Tamaño ideal para que se vea bien en cualquier celu */
+    height: auto;
+    padding: 10px;
+  }
+
+  /* Centramos todos los textos e info */
+  .detalle-info {
+    align-items: center; 
+    text-align: center;
+    width: 100%;
+  }
+
+  .detalle-info h1 {
+    font-size: 1.5rem; /* Un poquito más chico el título */
+  }
+
+  .detalle-desc {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .detalle-precio {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  /* El botón de WhatsApp más grande para que sea fácil de tocar con el dedo */
+  .btn-whatsapp {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+  }
+
   .btn-volver {
-    margin-left: 20px; /* Para que no toque el borde del teléfono */
+    margin: 10px auto 20px auto; /* Bien centrado arriba de la tarjeta */
+    font-size: 0.9rem;
   }
 }
