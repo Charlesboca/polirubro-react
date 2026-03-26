@@ -1,16 +1,16 @@
-import { useEffect } from "react"; // 1. Importamos useEffect
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Header from "./pages/Header";
-import Inicio from "./pages/Inicio";
-import Productos from "./pages/Productos";
-import Carrito from "./pages/Carrito";
-import Navbar from "./pages/NavBar";
-import WhatsAppButton from "./pages/WhatsAppButton";
-import Footer from "./pages/Footer";
-import { CarritoProvider } from "./context/CarritoContext";
+// Agregamos .jsx a todas las importaciones de componentes
+import Header from "./pages/Header.jsx";
+import Inicio from "./pages/Inicio.jsx";
+import Productos from "./pages/Productos.jsx";
+import Carrito from "./pages/Carrito.jsx";
+import Navbar from "./pages/NavBar.jsx";
+import WhatsAppButton from "./pages/WhatsAppButton.jsx";
+import Footer from "./pages/Footer.jsx";
+import { CarritoProvider } from "./context/CarritoContext.jsx";
 import "./App.css";
 
-// 2. Definimos el componente que resetea el scroll
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -25,9 +25,7 @@ export default function App() {
   return (
     <CarritoProvider>
       <BrowserRouter>
-        {/* 3. Lo colocamos dentro del Router para que escuche los cambios de ruta */}
         <ScrollToTop />
-        
         <div className="layout">
           <Header />
           <div className="nav-container">
