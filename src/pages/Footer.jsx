@@ -24,7 +24,7 @@ const Footer = () => {
     { 
       id: 2, 
       platform: "WhatsApp", 
-      url: "https://api.whatsapp.com/send?phone=5493794019159&text=Hola%20del%20Polirrubro!", 
+      url: "https://api.whatsapp.com/send?phone=5493795337995&text=Hola%20del%20Polirrubro!", 
       color: "#25D366" 
     }
   ];
