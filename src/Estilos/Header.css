@@ -1,51 +1,41 @@
-/* Header.css */
+/* Header.css - RECARGADO */
 .header {
   position: sticky;
   top: 0;
+  left: 0;                /* Asegura que empiece bien a la izquierda */
+  right: 0;               /* Asegura que termine bien a la derecha */
+  width: 100vw;           /* Usa el ancho total del visor del celu/PC */
+  margin-left: calc(-50vw + 50%); /* Truco para centrarlo si el padre es angosto */
+  
   z-index: 1000;
   display: flex;
-  justify-content: flex-end; /* Manda el carrito a la derecha */
+  justify-content: flex-end; 
   align-items: center;
-  background: #000000; 
-  min-height: 95px; 
-  padding: 10px 30px;
+  background-color: #000000; 
+  min-height: 120px; 
+  padding: 0 30px;
   border-bottom: 4px solid #facc15; 
   box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-}
+  
+  /* IMPORTANTE: Esto evita que el padding "infle" el ancho */
 
+
+/* El logo se mantiene igual */
 .logo-img {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   width: 130px; 
   height: auto;
-  cursor: pointer; /* Indispensable para que se sepa que es link */
-  transition: all 0.3s ease;
-  z-index: 1001; /* Un pelín más arriba que el header */
-}
-
-.logo-img:hover {
-  transform: translateX(-50%) scale(1.05); /* Mantiene el centrado en el hover */
-}
-
-.carrito-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #ffffff;
-  font-size: 16px;
   cursor: pointer;
-  z-index: 1002;
+  z-index: 1001;
 }
 
 /* --- AJUSTE PARA CELULARES --- */
 @media (max-width: 768px) {
   .header {
     min-height: 65px;
-    padding: 10px 15px;
-  }
-  
-  .logo-img {
-    width: 100px;
+    padding: 0 15px;
+    width: 100vw; /* Refuerzo para el celu */
   }
 }
