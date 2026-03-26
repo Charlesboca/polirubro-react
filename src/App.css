@@ -1,1 +1,16 @@
+/* Esto "limpia" la pantalla para que el negro llegue a los bordes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Esto evita que la página "baile" de costado */
+}
+
 h2{text-align:center}
+

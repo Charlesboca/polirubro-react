@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
 html {
   /* El estándar es 16px. Bajándolo a 14px o 15px achicás TODO. */
   font-size: 14px; 

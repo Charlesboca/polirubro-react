@@ -27,11 +27,12 @@ export default function App() {
     <CarritoProvider>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="layout">
-          <Header />
+           <Header />
           <div className="nav-container">
             <Navbar />
           </div>
+        <div className="layout">
+       
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/productos" element={<Productos />} />
@@ -39,8 +40,9 @@ export default function App() {
             <Route path="/promociones" element={<Promociones />} />
           </Routes>
           <WhatsAppButton />
-          <Footer />
+         
         </div>
+        <Footer />
       </BrowserRouter>
     </CarritoProvider>
   );

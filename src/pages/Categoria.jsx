@@ -12,7 +12,7 @@ const categorias = [
 ];
 
 const Categorias = () => {
-  const telefono = "5493794019159";
+  const telefono = "5493795337995";
   
   // ESTADO: null significa "viendo categorías", un nombre (ej: 'BAZAR') significa "viendo productos"
   const [seleccionada, setSeleccionada] = useState(null);

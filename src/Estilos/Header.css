@@ -1,50 +1,39 @@
-/* Header.css */
+/* Header.css - VOLVIENDO A LO SEGURO */
 .header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  width: 100%;             /* 100% igual que el footer */
+  background-color: #000000; 
+  min-height: 120px;       
   display: flex;
-  justify-content: flex-end; /* Manda el carrito a la derecha */
+  justify-content: flex-end; 
   align-items: center;
-  background: #000000; 
-  min-height: 95px; 
-  padding: 10px 30px;
+  padding: 0 30px;
   border-bottom: 4px solid #facc15; 
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  box-sizing: border-box;  /* Evita que el padding lo estire de más */
+  margin: 0;               /* Sin márgenes raros */
 }
 
 .logo-img {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%); /* Centrado matemático perfecto */
   width: 130px; 
   height: auto;
-  cursor: pointer; /* Indispensable para que se sepa que es link */
-  transition: all 0.3s ease;
-  z-index: 1001; /* Un pelín más arriba que el header */
-}
-
-.logo-img:hover {
-  transform: translateX(-50%) scale(1.05); /* Mantiene el centrado en el hover */
-}
-
-.carrito-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #ffffff;
-  font-size: 16px;
   cursor: pointer;
-  z-index: 1002;
+  z-index: 1001;
 }
 
 /* --- AJUSTE PARA CELULARES --- */
 @media (max-width: 768px) {
   .header {
-    min-height: 65px;
-    padding: 10px 15px;
+    min-height: 90px;
+    padding: 0 15px;
+    width: 100%;           /* Siempre 100% en el celu */
   }
-  
   .logo-img {
     width: 100px;
   }
