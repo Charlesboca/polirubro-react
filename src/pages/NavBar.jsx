@@ -3,7 +3,7 @@ import { useContext } from "react";
 // 1. Agregamos el .jsx al context
 import { CarritoContext } from "../context/CarritoContext.jsx";
 import { FaShoppingCart } from "react-icons/fa";
-import "../Estilos/Navbar.css";
+import "../Estilos/NavBar.css";
 
 
 function Navbar() {
