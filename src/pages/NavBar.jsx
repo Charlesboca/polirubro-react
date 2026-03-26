@@ -11,6 +11,7 @@ function Navbar() {
     <nav className="navbar">
       <Link to="/">Inicio</Link>
       <Link to="/productos">Productos</Link>
+      <Link to="/promociones">Promociones</Link>
 {/*       <Link to="/carrito">Carrito</Link>
  */}    </nav>
   );

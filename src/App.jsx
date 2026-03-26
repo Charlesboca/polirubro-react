@@ -8,6 +8,7 @@ import Carrito from "./pages/Carrito.jsx";
 import Navbar from "./pages/NavBar.jsx";
 import WhatsAppButton from "./pages/WhatsAppButton.jsx";
 import Footer from "./pages/Footer.jsx";
+import Promociones from "./pages/Promocion.jsx";
 import { CarritoProvider } from "./context/CarritoContext.jsx";
 import "./App.css";
 
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/" element={<Inicio />} />
             <Route path="/productos" element={<Productos />} />
             <Route path="/carrito" element={<Carrito />} />
+            <Route path="/promociones" element={<Promociones />} />
           </Routes>
           <WhatsAppButton />
           <Footer />
