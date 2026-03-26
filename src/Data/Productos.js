@@ -53,7 +53,7 @@ export const productos = [
     categoria: "BAZAR",
     imagen: setCopas,
     descripcion: "Set de Copas.",
-    envioGratis: true
+    envioGratis: false
   },
    {
     id: 6,

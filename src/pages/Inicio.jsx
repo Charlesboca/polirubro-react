@@ -19,7 +19,7 @@ export default function Inicio(){
   return(
     <> 
 
-
+       
         <Carrusel />
 
       <h2 style={{textAlign:"center", marginTop: "20px"}}>Bienvenido a la tienda Polirrubro</h2>

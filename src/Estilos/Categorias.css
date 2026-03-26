@@ -205,3 +205,22 @@
   text-transform: uppercase;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
+.btn-ver-detalle {
+  display: block;
+  text-align: center;
+  background: black;
+  color: #facc15;
+  border: 1px solid #facc15;
+  padding: 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-ver-detalle:hover {
+  background: #facc15;
+  color: #000;
+}

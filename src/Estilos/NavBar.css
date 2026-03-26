@@ -26,6 +26,6 @@
 }
 
 .navbar a:hover {
-  color: #00c3ff;
+  color: yellow;
   transform: scale(1.05); /* 🔥 efecto pro */
 }

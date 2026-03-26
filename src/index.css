@@ -51,3 +51,33 @@ background:#f5f5f5
   transform:scale(1.1);
   box-shadow:0 6px 15px rgba(0,0,0,0.4);
 }
+
+
+/* Contenedor para que el botón esté abajo y en el medio */
+.contenedor-boton-final {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;       /* Espacio generoso con lo de arriba */
+  padding-bottom: 40px;   /* Espacio al final de la pantalla */
+  width: 100%;
+}
+
+/* Estilo solicitado: Borde amarillo, fondo negro, letras amarillas */
+.btn-inicio-estilo {
+  text-decoration: none;
+  background-color: #000000;    /* Fondo Negro */
+  color: #ffff00;               /* Letras Amarillas */
+  border: 2px solid #ffff00;    /* Borde Amarillo */
+  padding: 12px 30px;
+  border-radius: 5px;           /* Bordes apenas redondeados, estilo simple */
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Efecto al pasar el mouse o tocar con el dedo */
+.btn-inicio-estilo:hover {
+  background-color: #ffff00;    /* Invierte colores: fondo amarillo */
+  color: #000000;               /* Letras negras */
+  cursor: pointer;
+}

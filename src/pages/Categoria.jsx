@@ -1,6 +1,9 @@
-import React, { useState } from 'react'; // <--- Importamos useState
+import React, { useState } from 'react';
 import "../Estilos/Categorias.css"; 
-import { productos } from "../Data/Productos.js"; // <--- Importamos tus productos locales
+
+
+import { productos } from "../Data/Productos.js"; 
+import { Link } from 'react-router-dom'; // <--- IMPORTANTE: Importamos Link
 
 import logoNegro from "../Imagenes/logo_polirrubro_1.jpg"; 
 
@@ -12,12 +15,8 @@ const categorias = [
 ];
 
 const Categorias = () => {
-  const telefono = "5493795337995";
-  
-  // ESTADO: null significa "viendo categorías", un nombre (ej: 'BAZAR') significa "viendo productos"
   const [seleccionada, setSeleccionada] = useState(null);
 
-  // Filtramos los productos según lo que el usuario clickeó
   const productosFiltrados = productos.filter(p => p.categoria === seleccionada);
 
   return ( 
@@ -26,18 +25,15 @@ const Categorias = () => {
         {seleccionada ? `Productos de ${seleccionada}` : "Nuestras Categorías"}
       </h2>
 
-      {/* BAJAMOS EL BOTÓN ACÁ: Debajo del título */}
-  {seleccionada && (
-    <div className="contenedor-volver">
-      <button className="btn-volver" onClick={() => setSeleccionada(null)}>
-        ⬅ Volver a Categorías
-      </button>
-    </div>
+      {seleccionada && (
+        <div className="contenedor-volver">
+          <button className="btn-volver" onClick={() => setSeleccionada(null)}>
+            ⬅ Volver a Categorías
+          </button>
+        </div>
       )}
 
       <div className="categorias-grid">
-        
-        {/* LÓGICA: Si NO hay seleccionada, mostramos categorías */}
         {!seleccionada ? (
           categorias.map(cat => (
             <div key={cat.id} className="categoria-card">
@@ -47,7 +43,6 @@ const Categorias = () => {
               <div className="card-info">
                 <h3>{cat.nombre}</h3>
                 <p>{cat.desc}</p>
-                {/* Cambiamos el link por un botón que "elige" la categoría */}
                 <button 
                   className="btn-ver-mas" 
                   onClick={() => setSeleccionada(cat.nombre)}
@@ -58,11 +53,7 @@ const Categorias = () => {
             </div>
           ))
         ) : (
-          /* LÓGICA: Si HAY seleccionada, mostramos los productos de ese rubro */
           productosFiltrados.map(prod => {
-            const msjProd = `Hola! Quería consultar por el producto: ${prod.nombre}`;
-            const urlProd = `https://wa.me/${telefono}?text=${encodeURIComponent(msjProd)}`;
-            
             return (
               <div key={prod.id} className="producto-card">
                 <div className="card-image-container">
@@ -72,10 +63,13 @@ const Categorias = () => {
                 <div className="card-info">
                   <h3>{prod.nombre}</h3>
                   <p className="precio-tag">${prod.precio}</p>
-                  <p>{prod.descripcion}</p>
-                  <a href={urlProd} target="_blank" rel="noopener noreferrer" className="btn-comprar">
-                    Consultar WhatsApp
-                  </a>
+                  
+                  {/* QUITAMOS LA DESCRIPCIÓN DE ACÁ PARA QUE QUEDE LIMPIO */}
+                  
+                  {/* ESTE BOTÓN LLEVA A LA PÁGINA NUEVA */}
+                  <Link to={`/producto/${prod.id}`} className="btn-ver-detalle">
+                    Ver más detalles
+                  </Link>
                 </div>
               </div>
             );
@@ -83,9 +77,8 @@ const Categorias = () => {
         )}
       </div>
       
-      {/* Mensaje por si no hay productos cargados en esa categoría */}
       {seleccionada && productosFiltrados.length === 0 && (
-        <p>Próximamente cargaremos productos en este rubro...</p>
+        <p className="msj-vacio">Próximamente cargaremos productos en este rubro...</p>
       )}
     </section>
   );

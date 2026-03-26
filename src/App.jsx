@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./pages/Header.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Productos from "./pages/Productos.jsx";
+import DetalleProducto from './pages/DetalleProducto'; // El componente que vamos a crear
 import Carrito from "./pages/Carrito.jsx";
 import Navbar from "./pages/NavBar.jsx";
 import WhatsAppButton from "./pages/WhatsAppButton.jsx";
@@ -36,6 +37,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/productos" element={<Productos />} />
+            <Route path="/producto/:id" element={<DetalleProducto />} />
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/promociones" element={<Promociones />} />
           </Routes>

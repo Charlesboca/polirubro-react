@@ -1,0 +1,161 @@
+/* Contenedor principal de la página */
+
+/* El cuadro que contiene la info */
+.detalle-container {
+  width: 90%;
+  max-width: 900px; /* Bajamos de 1000 a 900 para que sea más compacto */
+  margin: 0 auto;
+}
+
+.detalle-flex {
+  display: flex;
+  gap: 30px;
+  background: white;
+  padding: 25px;
+  border: 1px solid #333; /* Borde más fino para que no sature */
+  border-left: 4px solid #facc15; /* Detalle artesanal: solo borde grueso a la izquierda */
+  border-radius: 12px;
+  align-items: center; /* Centra verticalmente imagen y texto */
+}
+
+/* La imagen del producto */
+.detalle-img img {
+  width: 280px; /* Bajamos de 400 a 320 para que no sea gigante */
+  height: 320px;
+  object-fit: contain; /* Para que la pava o el cuaderno no se corten */
+  border-radius: 8px;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Información del producto */
+.detalle-info {
+  flex: 1; /* Hace que el texto use el espacio sobrante */
+  display: flex;           /* <--- Activamos flex para el texto */
+  flex-direction: column;  /* <--- Los pone uno debajo del otro */
+  align-items: flex-start; /* <--- Los alinea a la izquierda */
+  justify-content: center; /* <--- Los centra verticalmente respecto a la imagen */
+}
+
+.detalle-info h1 {
+  color: #facc15;
+  font-size: 1.8rem; /* Bajamos de 2.5 a 1.8 */
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+/* En el responsive (celu), queremos que el botón esté centrado */
+@media (max-width: 768px) {
+  .detalle-info {
+    align-items: center;   /* <--- Centra el texto y el botón en el celu */
+    text-align: center;
+  }
+}
+
+.detalle-cat {
+  display: inline-block;
+  background-color: #000;    /* Fondo negro */
+  color: #facc15;            /* Letras amarillas */
+  padding: 4px 12px;         /* Espacio interno */
+  border-radius: 50px;       /* Forma de píldora */
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase; /* Todo en mayúsculas */
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;       /* Separación del título */
+  border: 1px solid #facc15; /* Borde finito amarillo */
+}
+
+.detalle-desc {
+  font-size: 1rem; /* Más legible, menos gigante */
+  color: black;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.detalle-precio {
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 800;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Botón de WhatsApp más sutil */
+.btn-whatsapp {
+  display: inline-block; /* Ya no ocupa todo el ancho en PC */
+  padding: 12px 25px;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 50px; /* Bordes redondeados tipo cápsula */
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+  margin-top: 10px;        /* <--- Empuja el botón un poquito hacia abajo */
+  display: inline-block;
+}
+
+.btn-whatsapp:hover {
+  transform: scale(1.05);
+  background: #20ba5a;
+}
+
+/* DetalleProducto.css */
+
+.detalle-page {
+  /* Subimos de 120px a 160px para que haya una separación clara del Nav */
+  padding-top: 160px; 
+  padding-bottom: 80px;
+  min-height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column; /* Para que el botón 'Volver' esté arriba del cuadro */
+  align-items: center;    /* Centra todo el bloque en la pantalla */
+}
+
+.btn-volver {
+  /* ESTADO NORMAL: Fondo negro, letras amarillas */
+  background-color: #000;
+  color: #facc15;
+  border: 2px solid #facc15; /* Borde para que se defina bien sobre el fondo */
+  
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease; /* Para que el cambio de color sea suave */
+  
+  /* Los márgenes que ya te funcionaban */
+  margin-top: 20px; 
+  margin-bottom: 15px;
+
+  /* --- ESTO ES LO QUE LO CENTRA --- */
+  margin: 20px auto 15px auto; /* El 'auto' a los costados lo empuja al centro */
+  align-self: center;          /* Refuerzo para que el Flexbox lo centre */
+}
+
+/* ESTADO HOVER: Fondo amarillo, letras negras */
+.btn-volver:hover {
+  background-color: #facc15;
+  color: #000;
+  /* Opcional: un poquito de sombra para que "brille" */
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4); 
+  transform: translateY(-2px); /* Un pequeño saltito */
+}
+
+/* --- AJUSTE CELULAR --- */
+@media (max-width: 768px) {
+  .detalle-page {
+    padding-top: 130px; /* En el celu el Nav suele ser más chico, con 130px va bien */
+  }
+  
+  .btn-volver {
+    margin-left: 20px; /* Para que no toque el borde del teléfono */
+  }
+}

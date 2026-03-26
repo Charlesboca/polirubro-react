@@ -1,4 +1,6 @@
 import React, { useState } from 'react'; // 1. IMPORTAMOS useState
+import { Link } from "react-router-dom"; 
+
 import "../Estilos/Promocion.css";
 
 // --- IMPORTAMOS LAS IMÁGENES (tus rutas originales) ---
@@ -75,6 +77,16 @@ export default function Promociones() {
           </div>
         </div>
       )}
+
+
+  {/* Contenedor del botón centrado al final */}
+      <div className="contenedor-boton-final">
+        <Link to="/" className="btn-inicio-estilo">
+          Volver al Inicio
+        </Link>
+      </div>
+
+
     </div>
   );
 }
