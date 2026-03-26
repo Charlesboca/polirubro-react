@@ -146,3 +146,41 @@
     font-size: 40px;
   }
 }
+
+/* --- Cambio sacar si queda mal */
+
+
+/* --- AJUSTES PARA CELULARES (Pantallas de menos de 480px) --- */
+@media (max-width: 480px) {
+  
+  /* 1. Forzamos una sola columna */
+  .promos-grid {
+    display: flex;
+    flex-direction: column; /* Una debajo de otra */
+    align-items: center;    /* Centra las tarjetas */
+    gap: 25px;              /* Espacio entre una y otra */
+    padding: 10px;
+  }
+
+  /* 2. Controlamos el ancho de la tarjeta para que no sea gigante */
+  .promo-card {
+    width: 90%;          /* Que no toque los bordes del celu */
+    max-width: 320px;    /* Para que no se estire demasiado en celus grandes */
+    padding: 15px;
+    margin: 0 auto;      /* Centrado horizontal */
+  }
+
+  /* 3. Ajustamos la imagen para que guarde la proporción */
+  .promo-img {
+    height: 200px;       /* Altura fija cómoda */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  /* 4. Achicamos un poco el título de la página */
+  .titulo-seccion {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+}
