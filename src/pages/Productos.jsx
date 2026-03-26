@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom"; 
-import { CarritoContext } from "../context/CarritoContext";
+// 1. Agregamos el .jsx al context
+import { CarritoContext } from "../context/CarritoContext.jsx";
 import "../Estilos/Productos.css";
 import Categorias from "../pages/Categoria.jsx";
 

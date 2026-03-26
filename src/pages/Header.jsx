@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom"; // Agregamos useLocation
 import { useContext } from "react";
-import { CarritoContext } from "../context/CarritoContext";
+// 1. Agregamos el .jsx al context
+import { CarritoContext } from "../context/CarritoContext.jsx";
 import { FaShoppingCart } from "react-icons/fa";
 import logo from "../Imagenes/logo_polirrubro_1.jpg";
 import "../Estilos/Header.css";

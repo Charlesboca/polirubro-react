@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CarritoContext } from "../context/CarritoContext";
+// 1. Agregamos el .jsx al context
+import { CarritoContext } from "../context/CarritoContext.jsx";
 import { FaShoppingCart } from "react-icons/fa";
 import "../Estilos/Navbar.css";
 

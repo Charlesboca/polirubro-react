@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { CarritoContext } from "../context/CarritoContext";
+// 1. Agregamos el .jsx al context
+import { CarritoContext } from "../context/CarritoContext.jsx";
 
 function Carrito(){
  const {carrito,eliminarProducto,total}=useContext(CarritoContext);
