@@ -9,7 +9,7 @@ import "../Estilos/NavBar.css";
 function Navbar() {
   return (
     <nav className="navbar">
-      <Link to="/">Inicio</Link>
+      <Link to="/">Inicioo</Link>
       <Link to="/productos">Productos</Link>
 {/*       <Link to="/carrito">Carrito</Link>
  */}    </nav>
