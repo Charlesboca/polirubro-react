@@ -17,6 +17,7 @@ import imagenRegaleria from '../Imagenes/banner-regaleria.jpg';
 
 const Carrusel = () => {
   return (
+    
     <div className="carrusel-contenedor">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}

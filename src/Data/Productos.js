@@ -65,3 +65,5 @@ export const productos = [
     envioGratis: true
   }
 ];
+
+export default productos; // ESTA LÍNEA ES LA QUE TE FALTA

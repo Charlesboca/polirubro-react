@@ -1,0 +1,152 @@
+/* Novedades Section */
+.novedades-section {
+  padding: 20px 0;
+  background-color: transparent; /* Para que use el fondo de la página */
+  margin-top: 30px;    /* Separa del Navbar */
+  margin-bottom: 40px; /* Separa del Carrusel que viene después */
+}
+
+.novedades-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.novedades-header h2 {
+  font-size: 2rem;
+  color: #000; /* O blanco si tu fondo general es negro */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* La Grilla */
+.novedades-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 en PC */
+  gap: 20px;
+  padding: 0 10px;
+}
+
+/* La Tarjeta */
+.card-novedad {
+  background: #000;
+  border: 2px solid #facc15;
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-novedad:hover {
+  transform: translateY(-5px);
+}
+
+.tag-nuevo {
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  background: #facc15;
+  color: #000;
+  font-weight: bold;
+  padding: 2px 12px;
+  font-size: 0.8rem;
+  transform: rotate(-5deg);
+  z-index: 5;
+}
+
+.img-container {
+  background: #fff; /* Fondo blanco para que el producto resalte */
+  border-radius: 8px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.img-container img {
+  max-height: 90%;
+  max-width: 90%;
+  object-fit: contain;
+}
+
+.cat-label {
+  color: #facc15;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.card-body h3 {
+  color: #fff;
+  font-size: 1rem;
+  margin: 5px 0;
+  height: 40px; /* Para que todos midan igual */
+}
+
+.precio {
+  color: #facc15;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.btn-add {
+  background: #facc15;
+  border: none;
+  color: #000;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* --- RESPONSIVE PARA EL CELU --- */
+@media (max-width: 768px) {
+  .novedades-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 productos por fila en celu */
+    gap: 10px;
+  }
+  
+  .novedades-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* 2. Tu clase actual (revisá el color si el fondo es negro) */
+.titulo-seccion {
+  font-size: 2.2rem;
+  margin-top: 20px; /* Un poco de aire arriba */
+  margin-bottom: 40px;
+  color: black;  
+  border-bottom: 4px solid #facc15;
+  text-transform: uppercase;
+  display: inline-block;
+  padding-bottom: 5px;
+  letter-spacing: 1px;
+
+  
+}
+
+
+.inicio-container {
+  display: flex;
+  flex-direction: column; /* Apila los componentes uno abajo del otro */
+  gap: 60px;             /* ESTO SEPARA TODO: Ingresos del Carrusel, Carrusel del Mapa, etc. */
+  padding: 60px 0;       /* Le da aire arriba (del Nav) y abajo (del Footer) */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Opcional: Si el título del inicio quedó muy pegado al Nav */
+h2[style*="textAlign: center"] {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #000; /* O el color que prefieras para el Polirrubro */
+}
+
+.inicio-container > *:nth-child(2) { 
+  margin-top: 20px; 
+  margin-bottom: 20px;
+}
