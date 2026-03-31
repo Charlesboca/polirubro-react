@@ -22,7 +22,11 @@ export default function Inicio(){
        
        {/*  <Carrusel /> */}
 
-      <h2 style={{textAlign:"center", marginTop: "20px"}}>Bienvenido a la tienda Polirrubro</h2>
+
+      <h1 className="titulo-principal">
+        Bienvenido a la tienda Polirrubro Llevate Todo.
+      </h1>
+
 
       <div className="inicio-container">
         {/* SECCIÓN DE INGRESOS */}

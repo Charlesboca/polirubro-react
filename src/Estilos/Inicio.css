@@ -150,3 +150,13 @@ h2[style*="textAlign: center"] {
   margin-top: 20px; 
   margin-bottom: 20px;
 }
+
+
+.titulo-principal {
+    margin-top: 40px;
+
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+}
