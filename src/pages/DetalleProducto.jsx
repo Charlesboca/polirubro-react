@@ -35,7 +35,7 @@ export default function DetalleProducto() {
           )}
 
           <a 
-            href={`https://wa.me/5493794069660?text=Hola! Me interesa el producto: ${producto.nombre}`}
+            href={`https://wa.me/5493794069660?text=!Hola%20Polirubro%20Llevate!%20todo%20 Me interesa el producto: ${producto.nombre}`}
             target="_blank"
             rel="noreferrer"
             className="btn-whatsapp"
