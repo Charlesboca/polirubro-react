@@ -32,7 +32,7 @@ export default function Promociones() {
 
   const mensajeWhatsApp = (promo) => {
     const texto = `Hola! Me interesa la promo: ${promo.titulo} a $${promo.precio}`;
-    return `https://api.whatsapp.com/send?phone=5493795337995&text=${encodeURIComponent(texto)}`;
+    return `https://api.whatsapp.com/send?phone=5493794069660&text=${encodeURIComponent(texto)}`;
   };
 
   return (

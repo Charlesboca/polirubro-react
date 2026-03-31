@@ -105,9 +105,9 @@
 
 .btn-ver-mas {
   margin-top: auto; /* Empuja el botón al final de la card */
- /* background: #000;*/
+ background: #000;
 
-  background:  #FF00FF; 
+  /*background:  #FF00FF; */
   color: #facc15;
   text-decoration: none; /* Por si lo usás como etiqueta <a> */
   padding: 12px 20px;
@@ -211,9 +211,8 @@
 .btn-ver-detalle {
   display: block;
   text-align: center;
-  /* background: black; */
+  background: black; 
 
-    background: #FF00FF; 
 
   color: #facc15;
   border: 1px solid #facc15;
