@@ -3,7 +3,9 @@
   justify-content: center;
   gap: 35px;
 
-  background: #111;
+/*   background: #111;   */
+    background: #FF00FF;
+
   padding: 15px;
 
   margin-top: 20px; /* 🔥 más separación visible */

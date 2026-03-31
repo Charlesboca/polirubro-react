@@ -117,7 +117,9 @@
 
 .btn-volver {
   /* ESTADO NORMAL: Fondo negro, letras amarillas */
-  background-color: #000;
+  /*background-color: #000;*/
+
+  background-color:  #FF00FF; 
   color: #facc15;
   border: 2px solid #facc15; /* Borde para que se defina bien sobre el fondo */
   

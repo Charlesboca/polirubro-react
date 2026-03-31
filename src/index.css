@@ -65,7 +65,10 @@ background:#f5f5f5
 /* Estilo solicitado: Borde amarillo, fondo negro, letras amarillas */
 .btn-inicio-estilo {
   text-decoration: none;
-  background-color: #000000;    /* Fondo Negro */
+  /* background-color: #000000;    Fondo Negro */
+
+    background-color: #FF00FF;  /* Fondo Fuscia */
+
   color: #ffff00;               /* Letras Amarillas */
   border: 2px solid #ffff00;    /* Borde Amarillo */
   padding: 12px 30px;

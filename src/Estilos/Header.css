@@ -4,7 +4,9 @@
   top: 0;
   left: 0;
   width: 100%;             /* 100% igual que el footer */
-  background-color: #000000; 
+/*   background-color: #000000; */
+background-color:  #FF00FF; 
+ 
   min-height: 120px;       
   display: flex;
   justify-content: flex-end; 

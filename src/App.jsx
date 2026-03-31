@@ -40,8 +40,8 @@ export default function App() {
             <Route path="/productos" element={<Productos />} />
             <Route path="/producto/:id" element={<DetalleProducto />} />
             <Route path="/carrito" element={<Carrito />} />
-            <Route path="/promociones" element={<Promociones />} />
-
+{/*             <Route path="/promociones" element={<Promociones />} />
+ */}
         {/* Ruta para capturar cualquier otra ruta */}
                 <Route path="*" element={<NotFound />} />
 

@@ -20,7 +20,7 @@ export default function Inicio(){
     <> 
 
        
-        <Carrusel />
+       {/*  <Carrusel /> */}
 
       <h2 style={{textAlign:"center", marginTop: "20px"}}>Bienvenido a la tienda Polirrubro</h2>
 
