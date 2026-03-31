@@ -151,12 +151,14 @@ h2[style*="textAlign: center"] {
   margin-bottom: 20px;
 }
 
-
 .titulo-principal {
-    margin-top: 40px;
-
+  margin-top: 40px;
   font-size: 42px;
   font-weight: bold;
   text-align: center;
   color: black;
+
+  letter-spacing: 1px; /* separa un poco las letras */
+
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
 }
