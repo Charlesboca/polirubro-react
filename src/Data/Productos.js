@@ -11,6 +11,11 @@ import yenga from "../Imagenes/Stock/09-juego-yenga-llevate-todo.jpg";
 import mantaAcanalada from "../Imagenes/Stock/10-manta-acanalada-llevate-todo.jpg";
 import panquequera from "../Imagenes/Stock/11-panquequera-llevate-todo.jpg";
 import camara180 from "../Imagenes/Stock/12-camara-digital-180-llevate-todo.jpg";
+import glucometro from "../Imagenes/Stock/13-glucometro-llevate-todo.jpg";
+import SacaCorcho from "../Imagenes/Stock/14-sacacorcho-llevate-todo.jpg";
+
+
+
 
 
 
@@ -38,7 +43,7 @@ export const productos = [
     id: 3,
     nombre: "Cocina",
     precio: "200.000",
-    categoria: "ELECTRONICA",
+    categoria: "BAZAR",
     imagen: cocina,
     descripcion: `Con las cocinas Atlas 4 Hornallas, disfrutá de la combinación perfecta entre funcionalidad y estilo. Su diseño moderno y elegante se adapta a cualquier cocina, mientras que su rendimiento excepcional te permite cocinar tus platos favoritos con facilidad. Con cuatro hornallas de diferentes tamaños, podrás preparar múltiples platillos al mismo tiempo, ahorrando tiempo y esfuerzo en la cocina. Además, su encendido electrónico garantiza una chispa rápida y segura, brindándote la confianza que necesitas para cocinar sin preocupaciones. Ya sea que estés preparando una cena para tu familia o experimentando con nuevas recetas, las cocinas Atlas 4 Hornallas son tu mejor aliado en la cocina.`, 
   envioGratis: false
@@ -130,8 +135,18 @@ export const productos = [
     nombre: "Glugometro",
     precio: "19.000",
     categoria: "ELECTRONICA",
-    imagen: camara180,
+    imagen: glucometro,
     descripcion: "Glugómetro de Llevate Todo es la herramienta perfecta para medir el nivel de glucosa en sangre de manera rápida y precisa. Con su diseño compacto y fácil de usar, este glugómetro te permite monitorear tus niveles de glucosa en cualquier momento y lugar. Su tecnología avanzada garantiza resultados confiables, mientras que su pantalla clara y fácil de leer te permite interpretar tus resultados con facilidad. Ya sea para un desayuno especial o una merienda deliciosa, el glugómetro de Llevate Todo es tu aliado ideal en la cocina.",
+    envioGratis: true
+  }
+  ,
+  {
+    id: 14,
+    nombre: "Saca Corcho",
+    precio: "11.500",
+    categoria: "ELECTRONICA",
+    imagen: SacaCorcho,
+    descripcion: "Saca corcho de Llevate Todo es la herramienta perfecta para sacar corchos de manera rápida y sencilla. Con su diseño compacto y fácil de usar, este saca corcho te permite abrir botellas con facilidad en cualquier momento y lugar. Su tecnología avanzada garantiza resultados confiables, mientras que su pantalla clara y fácil de leer te permite interpretar tus resultados con facilidad. Ya sea para un desayuno especial o una merienda deliciosa, el saca corcho de Llevate Todo es tu aliado ideal en la cocina.",
     envioGratis: true
   }
 ];

@@ -46,21 +46,45 @@
 
 /* EL CONTENEDOR DE LA FOTO (AJUSTADO) */
 /* Contenedor específico para las fotos de productos */
+
 .card-image-container {
   width: 100%;
-  height: 220px;       /* Altura fija para que toda la grilla sea simétrica */
-  background-color: #f8f9fa; /* Fondo gris muy clarito por si la foto tiene transparencias */
+  height: 220px;
+  background-color: #f8f9fa;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
+  
+  /* BORDE: Empezamos transparente para que no salte al aparecer */
+  border: 2px solid transparent; 
+  
+  /* TRANSICIÓN DE SALIDA: Cuando sacás el mouse, el amarillo se va lento (1.5s) */
+  transition: border-color 0.5s ease-out; 
 }
 
-/* El efecto cuando pasamos el mouse por el contenedor */
+/* La imagen dentro del contenedor */
+.card-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ahora sí, aplicado a la imagen */
+  
+  /* TRANSICIÓN DE LA IMAGEN: Para que el zoom sea suave */
+  transition: transform 0.4s ease; 
+}
+
+/* EFECTO HOVER: Cuando pasamos el mouse por el CONTENEDOR */
+.card-image-container:hover {
+  /* TRANSICIÓN DE ENTRADA: El amarillo aparece rápido (0.1s) */
+  transition: border-color 0.1s ease-in;
+  border-color: #ffff00; 
+}
+
+/* ZOOM: Cuando el mouse está en el contenedor, la imagen se agranda */
 .card-image-container:hover img {
-  transform: scale(1.1); /* Agranda la imagen un 10% */
-  filter: brightness(1.05); /* Le da un toque de brillo extra (opcional) */
+  transform: scale(1.1);
+  filter: brightness(1.05);
 }
 
 
