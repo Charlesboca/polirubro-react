@@ -3,6 +3,8 @@ import "../Estilos/Mapa.css";
 import "../Estilos/Horarios.css";
 import "../Estilos/Inicio.css";
 import Carrusel from "../pages/Carrusel.jsx";
+import ProductoFirebase from "./ProductoFirebase.jsx";
+import AgregarProducto from "../Componentes/agregarProducto.jsx";
 
 // 1. IMPORTAMOS EL JSON (Asegurate de que la ruta sea esta)
 import productosData from '../Data/Productos.js'; 
@@ -21,6 +23,14 @@ export default function Inicio(){
 
        
        {/*  <Carrusel /> */}
+
+     
+
+      <div>
+
+      {/*<ProductoFirebase />  👈 ACA se muestra */}
+      
+    </div>
 
 
       <h1 className="titulo-principal">
