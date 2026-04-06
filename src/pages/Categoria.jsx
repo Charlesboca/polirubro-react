@@ -9,9 +9,13 @@ import logoNegro from "../Imagenes/logo_polirrubro_1.jpg";
 
 const categorias = [
   { id: 1, nombre: 'BAZAR', imagen: logoNegro, desc: 'Todo para tu hogar' },
-  { id: 2, nombre: 'LIBRERÍA', imagen: logoNegro, desc: 'Útiles y oficina' },
-  { id: 3, nombre: 'LIMPIEZA', imagen: logoNegro, desc: 'Artículos sueltos y marcas' },
-  { id: 4, nombre: 'REGALERÍA', imagen: logoNegro, desc: 'Juguetes y detalles' },
+  { id: 2, nombre: 'ELECTRONICA', imagen: logoNegro, desc: 'Artículos Electrónicos' },
+  { id: 3, nombre: 'REGALERÍA', imagen: logoNegro, desc: 'Regalos y detalles' },
+  { id: 4, nombre: 'TEXTIL', imagen: logoNegro, desc: 'Ropa de cama y mantas' },
+  { id: 5, nombre: 'HERRAMIENTAS', imagen: logoNegro, desc: 'Herramientas y accesorios' },
+  { id: 6, nombre: 'OCIO', imagen: logoNegro, desc: 'Juguetes y detalles' }
+
+
 ];
 
 const Categorias = () => {

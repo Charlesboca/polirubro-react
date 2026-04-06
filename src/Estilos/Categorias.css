@@ -57,6 +57,14 @@
   position: relative;
 }
 
+/* El efecto cuando pasamos el mouse por el contenedor */
+.card-image-container:hover img {
+  transform: scale(1.1); /* Agranda la imagen un 10% */
+  filter: brightness(1.05); /* Le da un toque de brillo extra (opcional) */
+}
+
+
+
 /* La imagen real dentro de la card (Categoría o Producto) */
 .card-img {
   width: 100%;
