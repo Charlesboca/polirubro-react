@@ -32,15 +32,21 @@
 .form-container button {
   width: 100%;
   padding: 12px;
-  background: #ff4d4d;
-  color: white;
+  background: black;
+  color: yellow;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+    font-weight: bold;
+
 }
 
 .form-container button:hover {
-  background: #e63e3e;
+background-color: #facc15;
+  color: #000;
+  /* Opcional: un poquito de sombra para que "brille" */
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4); 
+  transform: translateY(-2px); /* Un pequeño saltito */
 }

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import AgregarProducto from "../Componentes/agregarProducto.jsx";
+import ListaProducto from "../Componentes/ListaProducto.jsx";
+
 
 function Admin() {
   const [logueado, setLogueado] = useState(false);
@@ -36,6 +38,8 @@ function Admin() {
     <div>
       <h2 style={{ textAlign: "center" }}>Panel Admin</h2>
       <AgregarProducto />
+      <ListaProducto />
+   
     </div>
   );
 }
