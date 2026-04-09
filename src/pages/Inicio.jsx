@@ -4,9 +4,13 @@ import "../Estilos/Horarios.css";
 import "../Estilos/Inicio.css";
 import Carrusel from "../pages/Carrusel.jsx";
 
-import ProductoFirebase from "./ProductoFirebaseBasica.jsx";
-import CategoriaFirebase from './CategoriaFirebase.jsx';
-import AgregarProducto from "../Componentes/agregarProducto.jsx";
+// --- AGREGAR ESTOS IMPORTS ARRIBA ---
+import { useEffect, useState } from 'react';
+import { db } from "../firebase"; 
+import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { Link } from 'react-router-dom';
+
+
 
 // 1. IMPORTAMOS EL JSON (Asegurate de que la ruta sea esta)
 import productosData from '../Data/Productos.js'; 
@@ -14,58 +18,72 @@ import productosData from '../Data/Productos.js';
 export default function Inicio(){
 
   // 2. LÓGICA PARA SACAR LOS 4 ÚLTIMOS
-  const ingresosRecientes = useMemo(() => {
-    return [...productosData]
-      .sort((a, b) => b.id - a.id) // Ordena de mayor a menor por ID
-      .slice(0, 4);                // Toma los primeros 4
-  }, []);
+const [ingresosRecientes, setIngresosRecientes] = useState([]);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  const obtenerUltimos = async () => {
+    try {
+      const q = query(collection(db, "productos"), orderBy("timestamp", "desc"), limit(4));
+      const querySnapshot = await getDocs(q);
+      const docs = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setIngresosRecientes(docs);
+    } catch (error) {
+      console.error("Error novedades:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  obtenerUltimos();
+}, []);
 
   return(
     <> 
 
+    <h1 className="titulo-principal">
+        Bienvenido a la tienda Polirrubro Llevate Todo.
+      </h1>
+
+<section className="novedades-section">
+  <h2 className="titulo-home">LO ÚLTIMO QUE INGRESÓ</h2>
+  
+  {loading ? (
+    <p className="cargando">Cargando novedades...</p>
+  ) : (
+    <div className="productos-grid-home">
+      {ingresosRecientes.map(prod => (
+        <div key={prod.id} className="producto-card-home">
+          <div className="img-container">
+            <img src={prod.imagen} alt={prod.nombre} />
+          </div>
+          <div className="info-home">
+            <span className="categoria-tag-home">{prod.categoria?.toUpperCase()}</span>
+            <h3>{prod.nombre?.toUpperCase()}</h3>
+            <p className="precio-home">${prod.precio}</p>
+            <Link to={`/producto/${prod.id}`} className="btn-ver-mas-home">
+              Ver Producto
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  )}
+
+  <div className="ver-todos-container">
+    <Link to="/productos" className="btn-ver-todo">VER TODO EL CATÁLOGO</Link>
+  </div>
+</section>
        
-       {/*  <Carrusel /> */}
-
-     
-
       <div>
 
       {/*<ProductoFirebase />  👈 ACA se muestra */}
       
     </div>
 
-
-      <h1 className="titulo-principal">
-        Bienvenido a la tienda Polirrubro Llevate Todo.
-      </h1>
+      
 
 
-      <div className="inicio-container">
-        {/* SECCIÓN DE INGRESOS */}
-        <section className="novedades-section">
-          <div className="novedades-header">
-            <h2 className="titulo-seccion">NUEVOS INGRESOS 📦</h2>
-          </div>
-
-          <div className="novedades-grid">
-            {ingresosRecientes.map((prod) => (
-              <div key={prod.id} className="card-novedad">
-                <span className="tag-nuevo">NUEVO</span>
-                <div className="img-container">
-                  {/* Si tus imágenes están en public/img/ usá la ruta normal */}
-                  <img src={prod.imagen} alt={prod.nombre} />
-                </div>
-                <div className="card-body">
-                  <span className="cat-label">{prod.categoria}</span>
-                  <h3>{prod.nombre}</h3>
-                  <p className="precio">${prod.precio.toLocaleString('es-AR')}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-
+     
      
 
       <section className="texto-pagina">
