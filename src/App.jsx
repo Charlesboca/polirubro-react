@@ -4,7 +4,12 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./pages/Header.jsx";
 import Inicio from "./pages/Inicio.jsx";
 import Productos from "./pages/Productos.jsx";
-import DetalleProducto from './pages/DetalleProducto'; // El componente que vamos a crear
+
+import DetalleProducto from './pages/DetalleProducto.jsx'; 
+
+import DetalleProductoFirebase from './pages/DetalleProductoFirebase.jsx'; 
+
+
 import Carrito from "./pages/Carrito.jsx";
 import Navbar from "./pages/NavBar.jsx";
 import WhatsAppButton from "./pages/WhatsAppButton.jsx";
@@ -40,10 +45,18 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Inicio />} />
             <Route path="/productos" element={<Productos />} />
-            <Route path="/producto/:id" element={<DetalleProducto />} />
+
+  {/* este anda a la vieja forma  */}
+  {/*  <Route path="/producto/:id" element={<DetalleProducto />} />*/}        
+
+          {/* este anda usando firebase  */}  
+          <Route path="/producto/:id" element={<DetalleProductoFirebase />} />
+
+
+
             <Route path="/carrito" element={<Carrito />} />
-{/*             <Route path="/promociones" element={<Promociones />} />
-  */}            <Route path="/admin" element={<Admin />} />
+{/*         <Route path="/promociones" element={<Promociones />} />*/}           
+           <Route path="/admin" element={<Admin />} />
  
         {/* Ruta para capturar cualquier otra ruta */}
                 <Route path="*" element={<NotFound />} />

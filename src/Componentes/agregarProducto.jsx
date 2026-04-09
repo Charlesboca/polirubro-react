@@ -4,6 +4,7 @@ import { db } from "../firebase";
 import "../Estilos/Formulario.css";
 import "../Estilos/ListaProducto.css";
 import { collection, query, where, getDocs, addDoc ,doc, setDoc } from "firebase/firestore";
+import { capitalizar } from "../utils/format";
 
 function AgregarProducto() {
 
@@ -78,51 +79,38 @@ function AgregarProducto() {
         imageUrl = data.secure_url;
       }
 
-   // 🔥 2. MANEJO DE CATEGORÍA
-          let categoriaFinal = form.categoria;
-          let categoriaId = "";
 
-          if (form.categoria === "nueva" && form.categoriaNueva) {
+      // 🔥 2. MANEJO DE CATEGORÍA
+            let categoriaFinal = form.categoria;
 
-            categoriaFinal = form.categoriaNueva.trim();
-            const nombreNormalizado = categoriaFinal.toLowerCase();
+            if (form.categoria === "nueva" && form.categoriaNueva) {
 
-            // 🔥 ID único (evita duplicados SIEMPRE)
-            const docRef = doc(db, "categorias", nombreNormalizado);
-            
-          
-            let categoriaId = "";
+              const nombreIngresado = form.categoriaNueva.trim();
+              const nombreNormalizado = nombreIngresado.toLowerCase();
 
-            let categoriaIdIngresada  = "";
+              // 🔥 guardamos categoría con ID único guardamos (evita duplicados SIEMPRE)
+              const docRef = doc(db, "categorias", nombreNormalizado);
 
+              await setDoc(docRef, {
+                nombreIngresado,
+                nombreNormalizado: nombreNormalizado,
+                fechaRegistro: new Date().toLocaleString("es-AR"),
+                timestamp: Date.now()
+              });
 
-            await setDoc(docRef, {
-              categoriaIdIngresada: categoriaFinal,
-              nombreNormalizado: nombreNormalizado,
-              fechaRegistro: new Date().toLocaleString("es-AR"),
-             timestamp: Date.now()
+              categoriaFinal = nombreNormalizado;
 
-            });
-
-            categoriaId = nombreNormalizado;
-
-          } else {
-            // 🔥 si eligió una existente
-            const catEncontrada = categorias.find(
-              (cat) => cat.nombre === form.categoria
-            );
-
-            if (catEncontrada) {
-              categoriaId = catEncontrada.id;
+            } else {
+              // 🔥 ya viene normalizada del select
+              categoriaFinal = form.categoria;
             }
-          }
+
 
       // 🔥 3. CREAR PRODUCTO
           const productoConFecha = {
             nombre: form.nombre,
             precio: Number(form.precio),
             categoria: categoriaFinal,
-            categoriaId: categoriaId, // 🔥 NUEVO (MUY IMPORTANTE)
             descripcion: form.descripcion,
             imagen: imageUrl,
             fechaRegistro: new Date().toLocaleString("es-AR"),
@@ -184,7 +172,11 @@ function AgregarProducto() {
 
           {categorias.map((cat) => (
             <option key={cat.id} value={cat.nombreNormalizado}>
-              {cat.nombreNormalizado}
+             
+             {/* 🔥 llamo a la función de capitalización desde utils */}
+             {cat.nombreNormalizado  
+             ? capitalizar(cat.nombreNormalizado) : ""}
+             
             </option>
           ))}
 

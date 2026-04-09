@@ -1,0 +1,182 @@
+/* CONTENEDOR GENERAL */
+.detalle-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+/* BOTON VOLVER */
+.btn-volver {
+  background-color: #000;
+  color: #facc15;
+  border: 2px solid #facc15;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1px;   /* 👈 más pegado arriba */
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;  display: block;
+  transition: 0.3s;
+}
+
+.btn-volver:hover {
+  background-color: #facc15;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* CARD PRINCIPAL */
+.detalle-card {
+  display: flex;
+  gap: 30px;
+  background: white;
+  padding: 25px;
+  border: 1px solid #333;
+  border-left: 4px solid #facc15;
+  border-radius: 12px;
+  align-items: flex-start;
+}
+
+/* IMAGEN */
+.detalle-img-col img {
+  width: 280px;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* INFO */
+.detalle-info-col {
+ flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 👈 esto la sube */
+  padding-top: 5px;
+
+}
+
+/* CATEGORIA */
+.detalle-cat {
+  display: inline-block;
+  background-color: #000;
+  color: #facc15;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  border: 1px solid #facc15;
+   width: auto;          /* 👈 evita que se estire */
+  max-width: fit-content;
+ 
+}
+
+/* TITULO */
+.titulo-producto {
+  color: #facc15;
+  font-size: 1.8rem;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+/* PRECIO */
+.detalle-precio {
+  font-size: 1.6rem;
+  color: black;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+/* DESCRIPCION */
+.detalle-desc {
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.btn-whatsapp-detalle {
+
+display: flex;
+  margin: 15px auto; /* 👈 esto lo centra */
+
+  width: auto;          /* 👈 evita que se estire */
+  max-width: fit-content;
+
+  padding: 10px 16px;
+  background: #25D366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+}
+
+/* CLICK (efecto presión) */
+.btn-whatsapp-detalle:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .btn-whatsapp-detalle {
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
+
+/* LOADING Y ERROR */
+.loading,
+.error {
+  text-align: center;
+  margin-top: 100px;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .detalle-card {
+    flex-direction: column;
+    text-align: center;
+    border-left: none;
+    border-top: 4px solid #facc15;
+  }
+
+  .detalle-img-col img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+  }
+
+  .detalle-info-col {
+    align-items: center;
+  }
+
+  .titulo-producto {
+    font-size: 1.5rem;
+  }
+
+  .btn-whatsapp-detalle {
+    width: 100%;
+    padding: 15px;
+  }
+}

@@ -3,7 +3,9 @@ import "../Estilos/Mapa.css";
 import "../Estilos/Horarios.css";
 import "../Estilos/Inicio.css";
 import Carrusel from "../pages/Carrusel.jsx";
-import ProductoFirebase from "./ProductoFirebase.jsx";
+
+import ProductoFirebase from "./ProductoFirebaseBasica.jsx";
+import CategoriaFirebase from './CategoriaFirebase.jsx';
 import AgregarProducto from "../Componentes/agregarProducto.jsx";
 
 // 1. IMPORTAMOS EL JSON (Asegurate de que la ruta sea esta)
@@ -106,6 +108,10 @@ export default function Inicio(){
           </div>
         </div>
       </section>
+
+     
+
+
     </>
   );
 }
