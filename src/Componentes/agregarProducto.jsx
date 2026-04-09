@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { agregarProducto } from "../services/firebaseService";
 import { db } from "../firebase";
 import "../Estilos/Formulario.css";
-import "../Estilos/eliminarProducto.css";
+import "../Estilos/ListaProducto.css";
 import { collection, query, where, getDocs, addDoc ,doc, setDoc } from "firebase/firestore";
 
 function AgregarProducto() {
