@@ -93,12 +93,19 @@ function ListaProductos() {
               </p>
               {prod.categoria && <p className="lp-categoria">{prod.categoria}</p>}
               
+<div className="lp-card-botones">
+
               <button className="lp-btn-eliminar" onClick={() => handleEliminar(prod.id, prod.nombre)}>
                 Eliminar
               </button>
               <button className="lp-btn-editar" onClick={() => setProductoEditando(prod)}>
                 Editar
               </button>
+
+
+</div>
+
+
             </div>
           ))}
         </div>

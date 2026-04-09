@@ -166,12 +166,20 @@ background-color: #facc15;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
 }
 
-/* Contenedor de botones */
+/* Contenedor de botones actualizado */
 .modal-botones {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 10px;
+  justify-content: flex-end; /* Los tira a la derecha */
+  gap: 15px;                /* Más espacio entre Guardar y Cancelar */
+  margin-top: 25px;         /* Más separación de los inputs de arriba */
+  padding-top: 15px;        /* Agregamos una separación interna */
+  border-top: 1px solid #eee; /* Una línea sutil para dividir el formulario de los botones */
+}
+
+/* Opcional: Para que los botones no se vean tan chiquitos en el celu */
+.modal-botones button {
+  min-width: 100px;
+  padding: 12px 20px;
 }
 
 .btn-confirmar {
@@ -208,4 +216,12 @@ background-color: #facc15;
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor para que no estén pegados */
+.lp-card-botones {
+    display: flex;
+    gap: 10px;        /* Espacio exacto entre botones */
+    margin-top: 15px; /* Separa los botones del texto/categoría */
+    justify-content: center;
 }
