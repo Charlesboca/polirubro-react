@@ -4,6 +4,8 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "../Estilos/Login.css";
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +38,8 @@ const Login = () => {
   };
 
   return (
+   <> 
+
     <div className="login-container">
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Acceso Administrador</h2>
@@ -66,7 +70,19 @@ const Login = () => {
 
         <button type="submit" className="btn-login">Ingresar</button>
       </form>
+
+
+
     </div>
+
+  
+    <div className="contenedor-boton-final">
+            <Link to="/" className="btn-inicio-estilo">
+              Volver al Inicio
+            </Link>
+          </div>
+
+    </>
   );
 };
 
