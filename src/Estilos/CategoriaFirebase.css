@@ -144,6 +144,21 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  
+  /* 🔹 Transición suave para que el efecto no sea brusco */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+}
+
+/* 🔹 Efecto al pasar el mouse por la card */
+.producto-card:hover {
+  /* Se levanta un poquito y la sombra se vuelve más profunda */
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  
+  /* Opcional: un borde sutil amarillo para que combine con tu marca */
+  border: 1px solid #facc15;
 }
 
 .precio-tag {
