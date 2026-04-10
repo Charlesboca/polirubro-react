@@ -14,47 +14,47 @@ const CategoriaFirebase = () => {
   const [lastDoc, setLastDoc] = useState(null);
   const [hayMas, setHayMas] = useState(true);
 
-  // 🔍 ESTADOS PARA BÚSQUEDA GLOBAL
+  // 🔍 ESTADOS PARA BÚSQUEDA Y FILTRO
   const [busqueda, setBusqueda] = useState("");
   const [todosLosProductos, setTodosLosProductos] = useState([]);
 
-  // 🔥 TRAER CATEGORÍAS (Limpio, sin cache)
+  // 🔥 1. TRAER CATEGORÍAS Y PRODUCTOS AL INICIO
   useEffect(() => {
-    const obtenerCategorias = async () => {
+    const obtenerDatosIniciales = async () => {
       setLoading(true);
       try {
+        // Traemos categorías
         const catSnapshot = await getDocs(collection(db, "categorias"));
         const listaCats = catSnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data()
         }));
         setCategoriasBD(listaCats);
+
+        // Traemos todos los productos (necesario para saber qué categorías tienen stock)
+        const prodSnapshot = await getDocs(collection(db, "productos"));
+        const listaProds = prodSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setTodosLosProductos(listaProds);
+
       } catch (error) {
-        console.error("Error al traer categorías:", error);
+        console.error("Error al cargar datos:", error);
       }
       setLoading(false);
     };
 
-    obtenerCategorias();
+    obtenerDatosIniciales();
   }, []);
 
-  // 🔥 TRAER TODOS LOS PRODUCTOS PARA LA BÚSQUEDA
-  useEffect(() => {
-    if (busqueda.length > 0 && todosLosProductos.length === 0) {
-      const traerTodoParaBuscar = async () => {
-        try {
-          const snapshot = await getDocs(collection(db, "productos"));
-          const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          setTodosLosProductos(docs);
-        } catch (error) {
-          console.error("Error en búsqueda global:", error);
-        }
-      };
-      traerTodoParaBuscar();
-    }
-  }, [busqueda, todosLosProductos.length]);
+  // 🔥 2. FILTRAR CATEGORÍAS QUE TIENEN AL MENOS UN PRODUCTO
+  // Comparamos el nombreNormalizado de la categoría con el campo categoria de los productos
+  const categoriasConStock = categoriasBD.filter(cat => 
+    todosLosProductos.some(prod => prod.categoria === cat.nombreNormalizado)
+  );
 
-  // 🔥 TRAER PRODUCTOS POR CATEGORÍA
+  // 🔥 TRAER PRODUCTOS POR CATEGORÍA (Paginación)
   useEffect(() => {
     if (!seleccionada) return;
 
@@ -105,7 +105,7 @@ const CategoriaFirebase = () => {
     setLoading(false);
   };
 
-  // 🔍 FILTRADO GLOBAL
+  // 🔍 FILTRADO GLOBAL (Ya usa todosLosProductos que cargamos arriba)
   const resultadosBusqueda = todosLosProductos.filter(prod => 
     prod.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
@@ -114,7 +114,6 @@ const CategoriaFirebase = () => {
 
   return ( 
     <section className="categorias-section">
-
       <div className="buscador-global-container">
         <input 
           type="text" 
@@ -143,7 +142,6 @@ const CategoriaFirebase = () => {
         <p className="msj-vacio">Cargando...</p>
       ) : (
         <div className="categorias-grid">
-
           {mostrarResultadosGlobales ? (
             resultadosBusqueda.length > 0 ? (
               resultadosBusqueda.map(prod => (
@@ -164,7 +162,8 @@ const CategoriaFirebase = () => {
             )
           ) : (
             !seleccionada ? (
-              categoriasBD.map(cat => (
+              // 🔹 CAMBIO AQUÍ: Usamos categoriasConStock en lugar de categoriasBD
+              categoriasConStock.map(cat => (
                 <div key={cat.id} className="categoria-card">
                   <div className="card-image-container">
                     <img src={cat.imagen || logoNegro} alt={cat.nombre} className="card-img" loading="lazy" />
@@ -201,7 +200,6 @@ const CategoriaFirebase = () => {
           <button className="btn-ver-mas" onClick={cargarMas}>Ver más</button>
         </div>
       )}
-
     </section>
   );
 };
