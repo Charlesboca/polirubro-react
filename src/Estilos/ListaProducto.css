@@ -1,0 +1,227 @@
+.lp-container {
+  padding: 20px;
+}
+
+.lp-titulo {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.lp-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.lp-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: 0.2s;
+}
+
+.lp-card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGEN */
+.lp-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* TEXTO */
+.lp-nombre {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.lp-precio {
+  color: green;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.lp-categoria {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+/* BOTÓN */
+.lp-btn-eliminar {
+/* ESTADO NORMAL: Fondo negro, letras amarillas */
+  background-color: #000;
+
+  /*background-color:  #FF00FF; */
+  color: #facc15;
+  border: 2px solid #facc15; /* Borde para que se defina bien sobre el fondo */
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+    font-weight: bold;
+
+}
+
+.lp-btn-eliminar:hover {
+background-color: #facc15;
+  color: #000;
+  /* Opcional: un poquito de sombra para que "brille" */
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4); 
+  transform: translateY(-2px); /* Un pequeño saltito */
+}
+
+.lp-btn-editar {
+ background-color: #000;
+
+  /*background-color:  #FF00FF; */
+  color: #facc15;
+  border: 2px solid #facc15; /* Borde para que se defina bien sobre el fondo */
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+    font-weight: bold;
+}
+
+.lp-btn-editar:hover {
+background-color: #facc15;
+  color: #000;
+  /* Opcional: un poquito de sombra para que "brille" */
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4); 
+  transform: translateY(-2px); /* Un pequeño saltito */
+}
+
+/* --- MODAL DE EDICIÓN --- */
+
+/* Fondo oscuro que cubre toda la pantalla */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Oscurece el fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px); /* Efecto de desenfoque opcional */
+}
+
+/* Caja blanca del modal */
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: #333;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Estilo para inputs y textarea */
+.modal input, 
+.modal textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+}
+
+.modal textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal input:focus, 
+.modal textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+/* Contenedor de botones actualizado */
+.modal-botones {
+  display: flex;
+  justify-content: flex-end; /* Los tira a la derecha */
+  gap: 15px;                /* Más espacio entre Guardar y Cancelar */
+  margin-top: 25px;         /* Más separación de los inputs de arriba */
+  padding-top: 15px;        /* Agregamos una separación interna */
+  border-top: 1px solid #eee; /* Una línea sutil para dividir el formulario de los botones */
+}
+
+/* Opcional: Para que los botones no se vean tan chiquitos en el celu */
+.modal-botones button {
+  min-width: 100px;
+  padding: 12px 20px;
+}
+
+.btn-confirmar {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-confirmar:hover {
+  background-color: #218838;
+}
+
+.btn-cancelar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-cancelar:hover {
+  background-color: #c82333;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contenedor para que no estén pegados */
+.lp-card-botones {
+    display: flex;
+    gap: 10px;        /* Espacio exacto entre botones */
+    margin-top: 15px; /* Separa los botones del texto/categoría */
+    justify-content: center;
+}

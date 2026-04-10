@@ -1,0 +1,52 @@
+.form-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+  outline: none;
+  border-color: #ff4d4d;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: yellow;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+    font-weight: bold;
+
+}
+
+.form-container button:hover {
+background-color: #facc15;
+  color: #000;
+  /* Opcional: un poquito de sombra para que "brille" */
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.4); 
+  transform: translateY(-2px); /* Un pequeño saltito */
+}

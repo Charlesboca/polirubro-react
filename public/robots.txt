@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# No queremos que Google muestre el formulario de carga ni el admin
+Disallow: /admin
+Disallow: /agregar-producto
+Disallow: /editar-producto
+
+# Le indicamos dónde está el mapa del sitio
+Sitemap: https://polillevatetodo.vercel.app/sitemap.xml
