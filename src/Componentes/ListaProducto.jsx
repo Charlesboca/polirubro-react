@@ -121,8 +121,12 @@ function ListaProductos() {
             <h3>Editar producto</h3>
             <input type="text" name="nombre" value={formEdit.nombre} onChange={handleChangeEdit} />
             <input type="number" name="precio" value={formEdit.precio} onChange={handleChangeEdit} />
-            <input type="text" name="categoria" value={formEdit.categoria} onChange={handleChangeEdit} />
-            <textarea name="descripcion" value={formEdit.descripcion} onChange={handleChangeEdit} />
+      {/* 🔹 CAMBIO AQUÍ: Mostramos la categoría pero quitamos el input editable */}
+            <label>Categoría:</label>
+            <div className="categoria-readonly">
+              {formEdit.categoria.toUpperCase()}
+            </div>   
+           <textarea name="descripcion" value={formEdit.descripcion} onChange={handleChangeEdit} />
             
             <div className="modal-botones">
               <button onClick={guardarCambios} className="btn-confirmar">Guardar</button>

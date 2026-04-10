@@ -232,3 +232,15 @@ background-color: #facc15;
   justify-content: center;
   gap: 15px;
 }
+
+.categoria-readonly {
+  background-color: #2a2a2a; /* Fondo oscuro para diferenciarlo de los inputs */
+  color: #facc15;            /* El amarillo de Cata */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #444;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  cursor: not-allowed;       /* Muestra el icono de 'prohibido' al pasar el mouse */
+}

@@ -1,13 +1,12 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react'; // Agregamos useEffect y useState aquí
 import "../Estilos/Mapa.css";
 import "../Estilos/Horarios.css";
 import "../Estilos/Inicio.css";
 import Carrusel from "../pages/Carrusel.jsx";
 
 // --- AGREGAR ESTOS IMPORTS ARRIBA ---
-import { useEffect, useState } from 'react';
 import { db } from "../firebase"; 
-import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
+import { collection, query, orderBy, limit, getDocs,updateDoc, increment,doc } from "firebase/firestore";
 import { Link } from 'react-router-dom';
 
 
@@ -36,6 +35,35 @@ useEffect(() => {
   };
   obtenerUltimos();
 }, []);
+
+useEffect(() => {
+    // 1. Preguntamos al navegador si ya tiene la marca
+    const yaVisito = sessionStorage.getItem("visitaRegistrada");
+    console.log("¿Ya visitó antes?:", yaVisito); // <--- AGREGÁ ESTO
+
+    // 2. Si NO existe la marca (!yaVisito), entramos al bloque
+    if (!yaVisito) {
+      
+      const registrarVisita = async () => {
+        console.log("Intentando sumar visita en Firebase..."); // <--- AGREGÁ ESTO
+        const docRef = doc(db, "metricas", "visitas");
+        try {
+          await updateDoc(docRef, { contador: increment(1) });
+          
+          // 3. IMPORTANTISIMO: Guardamos la marca para la próxima vez
+          sessionStorage.setItem("visitaRegistrada", "true");
+          
+          console.log("Visita contada correctamente");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+
+      // 4. Ejecutamos la función que definimos arriba
+      registrarVisita();
+    }
+  }, []);
+
 
   return(
     <> 

@@ -1,9 +1,12 @@
 import React from "react";
 import AgregarProducto from "../Componentes/agregarProducto.jsx";
 import ListaProducto from "../Componentes/ListaProducto.jsx";
-import { auth } from "../firebase"; // Importamos auth para poder cerrar sesión
+import { auth ,db} from "../firebase"; // Importamos auth para poder cerrar sesión
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { doc,getDoc } from "firebase/firestore";
+
 
 function Admin() {
   const navigate = useNavigate();
@@ -17,10 +20,31 @@ function Admin() {
     }
   };
 
+  const [visitas, setVisitas] = useState(0);
+
+  useEffect(() => {
+    const obtenerVisitas = async () => {
+      try {
+        const docRef = doc(db, "metricas", "visitas");
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setVisitas(docSnap.data().contador);
+        }
+      } catch (error) {
+        console.error("Error al obtener visitas:", error);
+      }
+    };
+
+    obtenerVisitas();
+  }, []);
+
+
   // Ya no necesitamos el estado 'logueado' ni el password '1234'
   // Porque si llegaste acá, es porque RutaProtegida ya te validó.
 
   return (
+  <>  
     <div style={{ padding: "20px" }}>
       <div style={{ 
         display: "flex", 
@@ -52,6 +76,14 @@ function Admin() {
       <hr style={{ borderColor: "#333", margin: "30px 0" }} />
       <ListaProducto />
     </div>
+   
+  <div className="admin-stats" style={{ display: 'flex', justifyContent: 'center', width: '100%', margin: '20px 0' }}>
+  <div className="stat-card">
+    <h3>📈 Visitas Totales</h3>
+    <p className="stat-number">{visitas.toLocaleString("es-AR")}</p>
+  </div>
+</div>
+</>
   );
 }
 
