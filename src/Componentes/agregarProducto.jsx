@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { agregarProducto } from "../services/firebaseService";
 import { db } from "../firebase";
+import { getAuth } from "firebase/auth"; // 🔹 Importamos Auth
 import "../Estilos/Formulario.css";
 import "../Estilos/ListaProducto.css";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { capitalizar } from "../utils/format";
 
 function AgregarProducto() {
+  const auth = getAuth(); // 🔹 Inicializamos Auth
+
   // 🔹 FORM
   const [form, setForm] = useState({
     nombre: "",
@@ -21,11 +24,11 @@ function AgregarProducto() {
   const [imagenFile, setImagenFile] = useState(null);
   const [categorias, setCategorias] = useState([]);
   
-  // 🔹 ESTADO PARA EL MODAL (Agregamos nombreProducto)
+  // 🔹 ESTADO PARA EL MODAL
   const [modal, setModal] = useState({
     show: false,
     mensaje: "",
-    tipo: "exito", // "exito" o "error"
+    tipo: "exito",
     nombreProducto: "" 
   });
 
@@ -46,7 +49,6 @@ function AgregarProducto() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Función para mostrar el modal (ahora acepta el nombre del producto)
   const mostrarModal = (mensaje, tipo = "exito", nombre = "") => {
     setModal({ show: true, mensaje, tipo, nombreProducto: nombre });
   };
@@ -54,6 +56,9 @@ function AgregarProducto() {
   // 🔥 SUBMIT
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // 🔹 Capturamos al usuario logueado justo antes de enviar
+    const usuarioActivo = auth.currentUser;
 
     if (!form.nombre || !form.precio) {
       mostrarModal("Por favor, completa el nombre y el precio.", "error");
@@ -93,7 +98,7 @@ function AgregarProducto() {
         categoriaFinal = nombreNormalizado;
       }
 
-      // 🔥 3. PRODUCTO
+      // 🔥 3. PRODUCTO (Con datos del usuario)
       const productoConFecha = {
         nombre: form.nombre,
         precio: Number(form.precio),
@@ -101,12 +106,16 @@ function AgregarProducto() {
         descripcion: form.descripcion,
         imagen: imageUrl,
         fechaRegistro: new Date().toLocaleString("es-AR"),
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        // 🔹 Aquí sumamos la información del creador
+        creadoPor: {
+          email: usuarioActivo ? usuarioActivo.email : "anonimo",
+          nombre: usuarioActivo?.displayName || "Admin"
+        }
       };
 
       await agregarProducto(productoConFecha);
 
-      // ✅ MOSTRAR ÉXITO (Pasamos el nombre antes de limpiar el form)
       mostrarModal("¡Producto agregado con éxito! 🔥", "exito", form.nombre);
 
       // 🔄 LIMPIAR
@@ -147,7 +156,6 @@ function AgregarProducto() {
         <button type="submit" className="btn-guardar">Guardar Producto</button>
       </form>
 
-      {/* 🔹 ESTRUCTURA DEL MODAL DINÁMICO */}
       {modal.show && (
         <div className="modal-overlay">
           <div className={`modal-content ${modal.tipo}`}>
