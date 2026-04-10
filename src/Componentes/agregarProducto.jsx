@@ -6,6 +6,7 @@ import "../Estilos/Formulario.css";
 import "../Estilos/ListaProducto.css";
 import { collection, getDocs, doc, setDoc } from "firebase/firestore";
 import { capitalizar } from "../utils/format";
+import { registrarLog } from "../utils/registrarLog"; // 🔹 Importamos la función de logs
 
 function AgregarProducto() {
   const auth = getAuth(); // 🔹 Inicializamos Auth
@@ -115,11 +116,18 @@ function AgregarProducto() {
         }
       };
 
+    // 1. Guardamos el nombre en una constante fija
+      const nombreParaLog = form.nombre;
+
+     // 2. Guardamos el producto
       await agregarProducto(productoConFecha);
 
-      mostrarModal("¡Producto agregado con éxito! 🔥", "exito", form.nombre);
+    // TODO: Activar auditoría cuando sea necesario
+    /// 3. Registramos el log con esa constante
+     /// await registrarLog("ALTA", `Producto agregado: ${nombreParaLog}`);
 
-      // 🔄 LIMPIAR
+    // 4. Recién ahora mostramos el modal y limpiamos el formulario, para asegurarnos que el mensaje tenga el nombre correcto y no se pierda por un cambio de estado rápido.
+      mostrarModal("¡Producto agregado con éxito! 🔥", "exito", form.nombre);
       setForm({ nombre: "", precio: "", categoria: "", categoriaNueva: "", imagen: "", descripcion: "" });
       setImagenFile(null);
 
