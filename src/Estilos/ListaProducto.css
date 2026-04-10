@@ -225,3 +225,10 @@ background-color: #facc15;
     margin-top: 15px; /* Separa los botones del texto/categoría */
     justify-content: center;
 }
+
+.modal-botones {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
