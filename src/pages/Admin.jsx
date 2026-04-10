@@ -1,89 +1,98 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AgregarProducto from "../Componentes/agregarProducto.jsx";
 import ListaProducto from "../Componentes/ListaProducto.jsx";
-import { auth ,db} from "../firebase"; // Importamos auth para poder cerrar sesión
-import { signOut } from "firebase/auth";
+import { auth, db } from "../firebase"; 
+import { signOut, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { doc,getDoc } from "firebase/firestore";
-
+import { doc, getDoc } from "firebase/firestore";
 
 function Admin() {
   const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      navigate("/login"); // Al salir, te manda al login
-    } catch (error) {
-      console.error("Error al cerrar sesión:", error);
-    }
-  };
-
   const [visitas, setVisitas] = useState(0);
+  const [usuarioLogueado, setUsuarioLogueado] = useState(null);
+  const [esperandoAuth, setEsperandoAuth] = useState(true); // 👈 Nuevo: para esperar a Firebase
+
+  useEffect(() => {
+    const desuscribir = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUsuarioLogueado(user);
+      } else {
+        setUsuarioLogueado(null);
+      }
+      setEsperandoAuth(false); // 👈 Ya terminó de chequear
+    });
+    return () => desuscribir();
+  }, []);
 
   useEffect(() => {
     const obtenerVisitas = async () => {
       try {
         const docRef = doc(db, "metricas", "visitas");
         const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          setVisitas(docSnap.data().contador);
-        }
+        if (docSnap.exists()) setVisitas(docSnap.data().contador);
       } catch (error) {
-        console.error("Error al obtener visitas:", error);
+        console.error("Error visitas:", error);
       }
     };
-
     obtenerVisitas();
   }, []);
 
-
-  // Ya no necesitamos el estado 'logueado' ni el password '1234'
-  // Porque si llegaste acá, es porque RutaProtegida ya te validó.
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/login");
+  };
 
   return (
-  <>  
-    <div style={{ padding: "20px" }}>
+  <div style={{ padding: "20px" }}>
+      
+      {/* SECCIÓN DE USUARIO */}
       <div style={{ 
-        display: "flex", 
-        justifyContent: "space-between", 
-        alignItems: "center",
-        borderBottom: "2px solid #facc15",
+        backgroundColor: "#1e1e1e", 
+        padding: "10px 20px", 
+        borderRadius: "8px", 
         marginBottom: "20px",
-        paddingBottom: "10px"
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        border: "1px solid #333"
       }}>
-        <h2 style={{ margin: 0 }}>Panel de Administración 🔐</h2>
+        <div>
+          {esperandoAuth ? (
+            <span style={{ color: "#777" }}>Verificando sesión...</span>
+          ) : usuarioLogueado ? (
+          <span style={{ color: "#facc15", fontWeight: "500" }}>
+          Conectado como: <strong style={{ fontWeight: "bold" }}>{usuarioLogueado.email}</strong>
+        </span>       ) : (
+            <span style={{ color: "#ff4444" }}>Sesión no detectada</span>
+          )}
+        </div>
         
-        <button 
-          onClick={handleLogout}
-          style={{
-            backgroundColor: "#facc15",
-            color: "#000",
-            border: "none",
-            padding: "8px 15px",
-            fontWeight: "bold",
-            borderRadius: "5px",
-            cursor: "pointer"
-          }}
-        >
+        <button onClick={handleLogout} style={{
+          backgroundColor: "#facc15", color: "#000", border: "none",
+          padding: "5px 12px", fontWeight: "bold", borderRadius: "4px", cursor: "pointer"
+        }}>
           Cerrar Sesión
         </button>
       </div>
 
+      <div style={{ borderBottom: "2px solid #facc15", marginBottom: "20px", paddingBottom: "10px" }}>
+        <h2 style={{ margin: 0 }}>Panel de Administración Polirrubro 🔐</h2>
+      </div>
+
+      
+
       <AgregarProducto />
       <hr style={{ borderColor: "#333", margin: "30px 0" }} />
+      
       <ListaProducto />
+
+      {/* ✅ Stats rápidas Centradas */}
+      <div style={{ marginBottom: "30px", textAlign: "center" }}>
+        <p style={{ margin: 0, color: "black", fontSize: "1.1rem" }}>
+          📈 Visitas Totales: <span style={{ color: "#facc15", fontWeight: "bold", textShadow: "1px 1px 1px rgba(0,0,0,0.1)" }}>{visitas}</span>
+        </p>
+      </div>
     </div>
-   
-  <div className="admin-stats" style={{ display: 'flex', justifyContent: 'center', width: '100%', margin: '20px 0' }}>
-  <div className="stat-card">
-    <h3>📈 Visitas Totales</h3>
-    <p className="stat-number">{visitas.toLocaleString("es-AR")}</p>
-  </div>
-</div>
-</>
   );
 }
 
