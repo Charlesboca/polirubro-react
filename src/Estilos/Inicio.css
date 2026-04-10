@@ -166,37 +166,38 @@ h2[style*="textAlign: center"] {
 /* estilo para los ultimos ingresos */
 .novedades-section {
   background-color: #000;
-  padding: 40px 20px;
+  padding: 20px 15px; /* Reducido de 40px a 20px */
 }
 
 .titulo-home {
   text-align: center;
   color: yellow;
-  margin-bottom: 30px;
-  font-size: 1.8rem;
+  margin-bottom: 20px; /* Reducido de 30px a 20px */
+  font-size: 1.4rem;    /* Un poco más chico que 1.8rem */
   text-transform: uppercase;
 }
 
 .productos-grid-home {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 1100px;
+  /* Achicamos el ancho mínimo de las tarjetas de 220px a 180px */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px; /* Espacio más cerrado entre tarjetas */
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .producto-card-home {
   background-color: #111;
-  border: 1px solid #facc15; /* Amarillo Polirrubro */
+  border: 1px solid #facc15;
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
-  padding-bottom: 15px;
+  padding-bottom: 12px; /* Un poco menos de aire abajo */
 }
 
 .img-container {
   width: 100%;
-  height: 200px;
+  height: 140px; /* CLAVE: Bajamos de 200px a 140px la altura de la foto */
 }
 
 .img-container img {
@@ -207,24 +208,25 @@ h2[style*="textAlign: center"] {
 
 .info-home h3 {
   color: #fff;
-  font-size: 1rem;
-  margin: 15px 0 5px;
+  font-size: 0.9rem; /* Un pelín más chico el nombre */
+  margin: 10px 0 5px; /* Menos margen superior */
 }
 
 .precio-home {
   color: #facc15;
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Bajamos de 1.4rem a 1.2rem */
   font-weight: bold;
 }
 
 .btn-ver-mas-home {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
+  margin-top: 8px;
+  padding: 6px 12px; /* Botón más pequeño */
   border: 1px solid #facc15;
   color: #facc15;
   text-decoration: none;
   border-radius: 5px;
+  font-size: 0.85rem;
   transition: 0.3s;
 }
 
@@ -235,17 +237,18 @@ h2[style*="textAlign: center"] {
 
 .ver-todos-container {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 25px; /* Reducido de 40px a 25px */
 }
 
 .btn-ver-todo {
   background: #facc15;
   color: #000;
-  padding: 12px 30px;
+  padding: 10px 25px; /* Botón más compacto */
   text-decoration: none;
   font-weight: bold;
   border-radius: 50px;
   text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 .btn-ver-todo:hover {
@@ -255,12 +258,66 @@ h2[style*="textAlign: center"] {
 
 .categoria-tag-home {
   display: inline-block;
-  font-size: 0.75rem;
-  color: #facc15; /* El amarillo de tu marca */
+  font-size: 0.65rem; /* Etiqueta más sutil */
+  color: #facc15;
   border: 1px solid #facc15;
-  padding: 2px 8px;
+  padding: 1px 6px;
   border-radius: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-weight: bold;
   letter-spacing: 1px;
+}
+
+/* --- MEDIA QUERIES PARA CELULARES --- */
+@media (max-width: 480px) {
+  .novedades-section {
+    padding: 15px 10px; /* Menos espacio a los costados */
+  }
+
+  .titulo-home {
+    font-size: 1.1rem; /* Título más acorde al celu */
+    margin-bottom: 15px;
+  }
+
+  .productos-grid-home {
+    /* Forzamos 2 columnas exactas para que entren los 4 en un cuadradito */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; /* Espacio mínimo entre tarjetas */
+  }
+
+  .img-container {
+    height: 110px; /* Foto más petisa para el celu */
+  }
+
+  .info-home {
+    padding: 8px;
+  }
+
+  .info-home h3 {
+    font-size: 0.8rem; /* Letra más chica para que no salte de renglón tanto */
+    height: 30px; 
+    margin: 5px 0;
+  }
+
+  .precio-home {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .categoria-tag-home {
+    font-size: 0.55rem;
+    padding: 1px 4px;
+  }
+
+  .btn-ver-mas-home {
+    font-size: 0.75rem;
+    padding: 5px;
+    width: 100%; /* El botón ocupa todo el ancho de la tarjeta */
+  }
+
+  .btn-ver-todo {
+    width: 90%; /* Botón de abajo casi de lado a lado */
+    padding: 10px;
+    font-size: 0.8rem;
+  }
 }
