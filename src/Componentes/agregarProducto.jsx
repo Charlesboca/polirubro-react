@@ -23,6 +23,7 @@ function AgregarProducto() {
   // 🔹 ESTADOS ADICIONALES
   const [imagenFile, setImagenFile] = useState(null);
   const [categorias, setCategorias] = useState([]);
+  const [modalAviso, setModalAviso] = useState({ show: false, mensaje: "" });
   
   // 🔹 ESTADO PARA EL MODAL
   const [modal, setModal] = useState({
@@ -124,11 +125,22 @@ function AgregarProducto() {
 
     } catch (error) {
       console.error("Error:", error);
-      mostrarModal("Ocurrió un error al intentar guardar.", "error");
-    }
+      // 🔹 Verificamos si el error es por falta de permisos
+      if (error.code === 'permission-denied' || error.message.includes('permissions')) {
+          setModalAviso({ 
+            show: true, 
+            mensaje: "🚫 Acceso Denegado: Tu usuario no tiene permisos para modificar productos." 
+          });
+        } else {
+    setModalAviso({ show: true, mensaje: "❌ Error inesperado al guardar." });
+  }
+}
+    
   };
 
   return (
+
+    <>  
     <div className="form-container">
       <h2>Agregar Producto al Polirrubro</h2>
 
@@ -179,6 +191,68 @@ function AgregarProducto() {
         </div>
       )}
     </div>
+
+
+{/* ✅ MODAL DE AVISO / ERROR CON ESTILO */}
+{modalAviso.show && (
+  <div className="modal-overlay" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
+    <div className="modal-content" style={{ 
+      border: "none", 
+      borderRadius: "15px", 
+      padding: "30px",
+      maxWidth: "400px",
+      background: "#1e1e1e", // Fondo oscuro sólido
+      boxShadow: "0 10px 30px rgba(0,0,0,0.5)",
+      textAlign: "center" 
+    }}>
+      {/* Icono de Alerta */}
+      <div style={{ 
+        fontSize: "50px", 
+        marginBottom: "15px",
+        background: "rgba(255, 68, 68, 0.1)",
+        width: "80px",
+        height: "80px",
+        lineHeight: "80px",
+        borderRadius: "50%",
+        margin: "0 auto 20px"
+      }}>
+        🚫
+      </div>
+
+      <h3 style={{ color: "#ff4444", fontSize: "22px", margin: "0 0 10px" }}>
+        Acceso Denegado
+      </h3>
+      
+      <p style={{ color: "#ccc", fontSize: "15px", lineHeight: "1.5", marginBottom: "25px" }}>
+        {modalAviso.mensaje.split(":")[1] || modalAviso.mensaje}
+      </p>
+      
+      <button 
+        onClick={() => setModalAviso({ show: false, mensaje: "" })} 
+        style={{ 
+          background: "linear-gradient(45deg, #facc15, #eab308)", 
+          color: "#000", 
+          fontWeight: "bold", 
+          border: "none",
+          padding: "12px 30px",
+          borderRadius: "8px",
+          cursor: "pointer",
+          width: "100%",
+          fontSize: "16px",
+          transition: "transform 0.2s"
+        }}
+        onMouseEnter={(e) => e.target.style.transform = "scale(1.03)"}
+        onMouseLeave={(e) => e.target.style.transform = "scale(1)"}
+      >
+        Entendido
+      </button>
+    </div>
+  </div>
+)}
+
+</>
+
+
   );
 }
 
