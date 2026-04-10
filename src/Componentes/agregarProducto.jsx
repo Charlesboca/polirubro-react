@@ -199,6 +199,7 @@ function AgregarProducto() {
           type="file"
           accept="image/*"
           onChange={(e) => setImagenFile(e.target.files[0])}
+          required
         />
 
         <textarea
@@ -206,6 +207,7 @@ function AgregarProducto() {
           placeholder="Descripción"
           value={form.descripcion}
           onChange={handleChange}
+          required
         />
 
         <button type="submit" className="btn-guardar">
