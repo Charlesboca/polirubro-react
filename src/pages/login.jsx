@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { auth } from "../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+// 1. Agregamos setPersistence y browserSessionPersistence a los imports
+import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import "../Estilos/Login.css"; // Ahora te paso un estilo acorde
+import "../Estilos/Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,16 +13,21 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); // Limpiar errores previos
+    setError("");
 
     try {
+      // 2. Configuramos la persistencia ANTES de loguear.
+      // browserSessionPersistence hace que la sesión dure solo mientras la pestaña esté abierta.
+      await setPersistence(auth, browserSessionPersistence);
+      
+      // 3. Ahora sí, intentamos el login normal
       await signInWithEmailAndPassword(auth, email, password);
-      // Si entra acá, el login fue exitoso
+      
       navigate("/admin"); 
     } catch (err) {
       console.error(err);
-      // Mensajes de error amigables
-      if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password") {
+      // Firebase a veces unifica errores en 'auth/invalid-credential' por seguridad
+      if (err.code === "auth/user-not-found" || err.code === "auth/wrong-password" || err.code === "auth/invalid-credential") {
         setError("Credenciales incorrectas. Revisá el mail y la clave.");
       } else {
         setError("Hubo un error al intentar ingresar.");
