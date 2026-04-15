@@ -6,7 +6,7 @@ import { eliminarProducto, editarProducto } from "../services/firebaseService";
 import "../Estilos/ListaProducto.css";
 import "../Estilos/Formulario.css"; // Reutilizamos estilos de modales
 
-function ListaProductos() {
+function ListaProductos({ trigger }) { // 👈 RECIBIMOS EL TRIGGER
   const [productos, setProductos] = useState([]);
   const [productoEditando, setProductoEditando] = useState(null);
   const [formEdit, setFormEdit] = useState({
@@ -53,9 +53,10 @@ function ListaProductos() {
     }
   };
 
+  // 🔹 MODIFICADO: Ahora escucha al trigger para refrescar cuando el Admin avise
   useEffect(() => {
     obtenerProductos();
-  }, []);
+  }, [trigger]); // 👈 Si trigger cambia (porque se agregó algo), se ejecuta esto
 
   useEffect(() => {
     if (productoEditando) {
@@ -121,12 +122,12 @@ function ListaProductos() {
             <h3>Editar producto</h3>
             <input type="text" name="nombre" value={formEdit.nombre} onChange={handleChangeEdit} />
             <input type="number" name="precio" value={formEdit.precio} onChange={handleChangeEdit} />
-      {/* 🔹 CAMBIO AQUÍ: Mostramos la categoría pero quitamos el input editable */}
+            {/* 🔹 CAMBIO AQUÍ: Mostramos la categoría pero quitamos el input editable */}
             <label>Categoría:</label>
             <div className="categoria-readonly">
               {formEdit.categoria.toUpperCase()}
             </div>   
-           <textarea name="descripcion" value={formEdit.descripcion} onChange={handleChangeEdit} />
+            <textarea name="descripcion" value={formEdit.descripcion} onChange={handleChangeEdit} />
             
             <div className="modal-botones">
               <button onClick={guardarCambios} className="btn-confirmar">Guardar</button>
