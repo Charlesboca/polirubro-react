@@ -68,9 +68,10 @@ useEffect(() => {
   return(
     <> 
 
-    <h1 className="titulo-principal">
-        Bienvenido a la tienda Polirrubro Llevate Todo.
-      </h1>
+<h1 className="titulo-principal">
+  Bienvenido a la tienda Polirrubro Llevate Todo 
+  <span className="sr-only"> en Corrientes Capital. Encontrá bazar, electrónica y mucho más con los mejores precios.</span>
+</h1>
 
 <section className="novedades-section">
   <h2 className="titulo-home">LO ÚLTIMO QUE INGRESÓ</h2>
