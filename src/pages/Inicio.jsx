@@ -73,7 +73,8 @@ useEffect(() => {
   <span className="sr-only"> en Corrientes Capital. Encontrá bazar, electrónica y mucho más con los mejores precios.</span>
 </h1>
 
-<section className="novedades-section">
+<section className="novedades-section" data-nosnippet>
+
   <h2 className="titulo-home">LO ÚLTIMO QUE INGRESÓ</h2>
   
   {loading ? (
